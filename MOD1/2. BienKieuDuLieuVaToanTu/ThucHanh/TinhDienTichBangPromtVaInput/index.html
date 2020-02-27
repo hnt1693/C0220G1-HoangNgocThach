@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chuyendoitiente</title>
+</head>
+<body>
+<label >Amount:</label>
+<input type="text" id="amount">
+<label>FromCurrent:</label>
+<select id="fromCurrent">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="EURO">EURO</option>
+</select>
+<label>ToCurrent:</label>
+<select id="toCurrent">
+    <option value="VND">VND</option>
+    <option value="USD">USD</option>
+    <option value="EURO">EURO</option>
+</select>
+<input id="result">
+<button onclick="convert()">Convert</button>
+<h2 id="thongbao"></h2>
+<script>
+    function convert(){
+        let result= 0;
+        let amount = document.getElementById("amount");
+        let fromCurrent= document.getElementById("fromCurrent").value;
+        let toCurrent = document.getElementById("toCurrent").value;
+        let fromCurrentvalue = 0;
+        let toCurrentvalue = 0;
+        if (fromCurrent==="VND") {
+            fromCurrentvalue=1;
+        }else if (fromCurrent==="USD")
+        {fromCurrentvalue=23000;}
+        else  if (fromCurrent==="EURO"){
+            fromCurrentvalue=25000;}
+        if (toCurrent==="VND") {
+            toCurrentvalue=1;
+        }else if(toCurrent==="USD")
+        {toCurrentvalue=23000;}
+        else  if(toCurrent==="EURO") {
+            toCurrentvalue=25000;}
+        result=amount.value*(fromCurrentvalue/toCurrentvalue);
+        if (result==0){alert("Hay nhap so tien quy doi!")
+        }
+        else{ document.getElementById("result").value=result}
+        document.getElementById("thongbao").innerHTML="So tien quy doi la "+result
+    }
+</script>
+
+
+</body>
+</html>
