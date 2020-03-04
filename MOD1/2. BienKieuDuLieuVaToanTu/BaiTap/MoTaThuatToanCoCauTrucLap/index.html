@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MaxValue</title>
+</head>
+<body>
+<script>
+    let Number = parseInt(prompt("Bạn cần tính nhập bao nhiêu số để check"));
+    var Max;
+    for (i = 1; i <= Number; i++) {
+        let NumberI = parseInt(prompt("Nhập số thứ " + i + " : "));
+        if (i===1){
+            Max = NumberI;
+        }
+        if (Max < NumberI) {
+            Max = NumberI;
+        }
+           }
+    document.write(" Giá trị lớn nhất trong chuỗi bạn nhập là : " + Max);
+</script>
+</body>
+</html>

@@ -3,25 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Nhập thông tin khách hàng</title>
-    <script src="inpVisitor.js"></script>
-    <script src="outVisitor.js"></script>
+    <script src="Visitor.js"></script>
+
 </head>
 <body>
-<button type="button"  onclick="inpVisitor()">Nhập thông tin khách hàng</button>
-<button type="button" onclick="ElementEdit()">Chỉnh sửa thông tin khách hàng</button>
-<button type="button" onclick="Tinh()">Tính tiền</button><br>
-<h1 style="color: blue" > THÔNG TIN KHÁCH HÀNG</h1>
-<p1 id = "name" value = "name">1. Name : </p1> <br>
-<p1 id = "birthday" value = "birthday">2. Birthday :</p1> <br>
-<p1 id = "email">3. Email :</p1><br>
-<p1 id = "adress">4. Adress :</p1><br>
-<p1 id = "customer">5. Customer :</p1><br>
-<p1 id = "discount"> 6. Discount : </p1><br>
-<p1 id = "peoples"> 7. Số người : </p1><br>
-<p1 id = "rentdays">8. Số ngày thuê : </p1><br>
-<p1 id = "rentservice">9. Dịch vụ :</p1><br>
-<p1 id = "rentroom"> 10. Loại phòng :</p1> <br>
-<h1 id="Resuilt"></h1>
-<label id="label" value = "label1"> label </label>
+<script>
+    addEventListener("keydown", function (event) {
+        let z = event.key ;
+       if ((event.altKey)&&(z=="w")){
+           document.getElementById("BInput").click();
+        }
+        if ((event.altKey)&&(z=="q")){
+            document.getElementById("BEdit").click();
+        }
+        if ((event.altKey)&&(z=="t")){
+            document.getElementById("BTotal").click();
+        }
+    });
+</script>
+<button type="button" id="BInput" onclick="inpVisitor()">Nhập thông tin khách hàng (Alt + W)</button>
+<button type="button" id="BEdit" onclick="ElementEdit()">Chỉnh sửa thông tin khách hàng(Alt + Q)</button>
+<button type="button" id="BTotal" onclick="Tinh()">Tính tiền (Alt + T)</button>
+<button onclick="text()">ok</button>
+<br>
+<h1 style="color: blue"> THÔNG TIN KHÁCH HÀNG</h1>
+<p1 id="name" value="name">1. Name :</p1>
+<br>
+<p1 id="birthday" value="birthday">2. Birthday :</p1>
+<br>
+<p1 id="email">3. Email :</p1>
+<br>
+<p1 id="adress">4. Adress :</p1>
+<br>
+<p1 id="customer">5. Customer :</p1>
+<br>
+<p1 id="discount"> 6. Discount :</p1>
+<br>
+<p1 id="peoples"> 7. Số người đi kèm :</p1>
+<br>
+<p1 id="rentdays">8. Số ngày thuê :</p1>
+<br>
+<p1 id="rentservice">9. Dịch vụ :</p1>
+<br>
+<p1 id="rentroom"> 10. Loại phòng :</p1>
+<br>
+<h1 id="Resuilt" style="color: green;font-size: 50px;"   >Kết quả</h1>
 </body>
 </html>

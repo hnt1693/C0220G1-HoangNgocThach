@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính cước điện thoại</title>
+</head>
+<body>
+<script>
+    let CheckNumberCall = true;
+    let Total;
+    let PhiBatBuoc = 25000;
+    while (CheckNumberCall) {
+        let NumberCall = parseInt(prompt("Nhập vào số phút gọi "));
+        if (Number.isNaN(NumberCall) === true) {
+            CheckNumberCall = true;
+        } else {
+            CheckNumberCall = false;
+            if (NumberCall < 50) {
+                Total = NumberCall * 600 + PhiBatBuoc;
+            } else if (NumberCall < 200) {
+                Total = 50 * 600 + PhiBatBuoc + (NumberCall - 50) * 400;
+            } else {
+                Total = 50 * 600 + PhiBatBuoc + 150 * 400 + (NumberCall - 200) * 200;
+            }
+        }
+
+    }
+    document.write(" Cước phí phải thanh toán là " + Total);
+</script>
+</body>
+</html>

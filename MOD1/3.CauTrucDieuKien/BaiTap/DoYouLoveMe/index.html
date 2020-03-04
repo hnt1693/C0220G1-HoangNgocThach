@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do You Love Me</title>
+</head>
+<body>
+<h1> Do you love me???</h1>
+<button onclick="alert('Yes me too')" id="yes">Yes</button>
+<button onmouseover="Move()" style="position:absolute " id="no"> NO</button>
+<script>
+    function Move() {
+    let nut1 = document.getElementById("no");
+    nut1.style.left = Math.random() * window.innerWidth + 'px';
+    nut1.style.top = Math.random() * window.innerHeight + 'px';
+    }
+</script>
+</body>
+</html>

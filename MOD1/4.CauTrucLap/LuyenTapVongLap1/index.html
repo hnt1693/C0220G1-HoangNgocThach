@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dãy Fibonacci</title>
+</head>
+<body>
+<button type="button" onclick="InDayFibonacci()">In Dãy Fibonacci</button>
+<button type="button" onclick="TimSo()">Tìm số đầu tiên trong dãy</button>
+<button type="button" onclick="TinhTong()">Tính tổng</button>
+<script>
+    function InDayFibonacci() {
+        // Tìm 20 số fibonacci
+        let a1 = 0;
+        let a2 = 1;
+        let dem = 0;
+        let number = parseInt(prompt("Bạn muốn tìm bao nhiêu số fibonacci"));
+        let i = 0;
+        while (i < number) {
+            dem = a2;
+            a2 += a1;
+            a1 = dem;
+            i++;
+            document.write(a1 + " ");
+        }
+    }
+
+    function TimSo() {
+        // Tìm 20 số fibonacci
+        let a1 = 0;
+        let a2 = 1;
+        let dem = 0;
+        let count = 0;
+        let number = parseInt(prompt("Nhập số cần chia hết trong dãy fibonacci"));
+        let i = 0;
+        do {
+            dem = a2;
+            a2 += a1;
+            a1 = dem;
+            i++;
+            if (a2 % number === 0) {
+                count++;
+                document.write(a2);
+            }
+        }
+        while (count < 1)
+    }
+
+    function TinhTong() {
+        let a1 = 0;
+        let a2 = 1;
+        let dem = 0;
+        let Tong = 0;
+        let number = parseInt(prompt("Bạn muốn tính tổng bao nhiêu số Fibonacci đầu tiên"));
+        let i = 1;
+        while (i < number) {
+            dem = a2;
+            a2 += a1;
+            a1 = dem;
+            Tong += a2;
+            i++;
+
+        }
+        document.write("Tổng " + number + " số Fibonacci đầu tiên là " + Tong);
+    }
+</script>
+</body>
+</html>

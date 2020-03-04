@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GiaiPhuongTrinhBac2</title>
+</head>
+<body>
+
+<script>
+
+    let a = parseInt(prompt("Nhập a : "));
+    let b = parseInt(prompt("Nhập b : "));
+    let c = parseInt(prompt("Nhập c : "));
+    let Delta = Math.pow(b,2)-(4*a*c);
+    document.write(Delta);
+    if (a == 0){
+        document.write(" Phương trình có nghiệm là x1 = x2 = ", (-c/b));
+    } else {
+        if (Delta<0){
+            document.write(" Phương trình vô nghiệm");
+        }
+        else {
+            let x1 = ((-b+Math.sqrt(Delta))/(2*a));
+            let x2 = ((-b-Math.sqrt(Delta))/(2*a));
+            document.write(" Nghiệm x1  : = " + x1 );
+            document.write(" Nghiệm x2  : = " + x2 ) ;
+
+        }
+    }
+
+</script>
+</body>
+</html>

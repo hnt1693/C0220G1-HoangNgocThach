@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển số sang chữ</title>
+</head>
+<body>
+<script>
+    let InputNumber = parseInt(prompt("Nhập số bạn cần chuyển đổi"));
+    Doc3So(InputNumber);
+
+    //Phân tích số ra hàng trăm, hàng chục, hàng đơn vị
+    function Doc3So(InputNumber) {
+        let HangTram = Math.floor(InputNumber / 100);
+        let HangChuc = Math.floor((InputNumber - (HangTram * 100)) / 10);
+        let HangDonVi = InputNumber - HangTram * 100 - HangChuc * 10;
+
+        function SoSangChu(Number) {
+            switch (Number) {
+                case 1 : {
+                    NHangTram = " Một";
+                    break;
+                }
+                case 2 : {
+                    NHangTram = " Hai";
+                    break;
+                }
+                case 3 : {
+                    NHangTram = " Ba";
+                    break;
+                }
+                case 4 : {
+                    NHangTram = " Bốn";
+                    break;
+                }
+                case 5 : {
+                    NHangTram = " Năm";
+                    break;
+                }
+                case 6 : {
+                    NHangTram = " Sáu";
+                    break;
+                }
+                case 7 : {
+                    NHangTram = " Bảy";
+                    break;
+                }
+                case 8 : {
+                    NHangTram = " Tám";
+                    break;
+                }
+                case 9: {
+                    NHangTram = " Chín";
+                    break;
+                }
+                case 0: {
+                    NHangTram = " Không";
+                    break;
+                }
+            }
+        }
+
+        if (HangTram == 0) {
+            if (HangChuc == 0) {
+                SoSangChu(HangDonVi);
+                document.write(NHangTram);
+            } else if (HangChuc == 1) {
+                SoSangChu(HangDonVi);
+                if (NHangTram == " Năm") {
+                    document.write(" Mười Lăm");
+                } else {
+                    SoSangChu(HangDonVi);
+                    document.write(" Mười " + NHangTram);
+                }
+            } else {
+                SoSangChu(HangChuc);
+                document.write(NHangTram + " Mươi ");
+                SoSangChu(HangDonVi);
+
+            }
+        }
+
+    /*else {
+        SoSangChu(HangTram);
+        document.write(NHangTram + " Trăm ");
+        if (HangChuc == 0) {
+            SoSangChu(HangDonVi);
+            document.write(NHangTram);
+        } else if (HangChuc == 1) {
+            SoSangChu(HangDonVi);
+            if (NHangTram == " Năm") {
+                document.write(" Mười Lăm");
+            }
+            else {
+                SoSangChu(HangDonVi);
+                document.write(" Mười "+ NHangTram);
+            }
+        }
+        else {
+            SoSangChu(HangChuc);
+            document.write(NHangTram + " Mươi ");
+            SoSangChu(HangDonVi);
+            if (NHangTram==" Năm"){
+                document.write(" Lăm");
+            } else if ( NHangTram= " Một"){
+                document.write(" Mốt");
+            }
+            else
+            {
+                SoSangChu(HangDonVi);
+                document.write(NHangTram);
+
+            }
+        }
+    }*/
+
+
+</script>
+</body>
+</html>

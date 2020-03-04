@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IBM</title>
+</head>
+<body>
+<script>
+    let CanNang;
+    let ChieuCao;
+    do {
+         CanNang = parseInt(prompt("Nhập vào cân nặng của bạn : kg"));
+    }
+    while (!((CanNang) > 0));
+ do {
+     ChieuCao = parseInt(prompt("Nhập vào chiều cao của bạn : cm"));
+ }
+ while (!((ChieuCao) > 0));
+ let IBM = (CanNang)/(Math.pow(ChieuCao/100,2));
+    if (IBM < 18.5) {
+        alert("UnderWeight");
+    } else if (IBM <= 25) {
+        alert("Normal");
+    } else if (IBM <= 30) {
+        alert("OverWeight");
+    } else {
+        alert("Obese");
+    }
+</script>
+</body>
+</html>

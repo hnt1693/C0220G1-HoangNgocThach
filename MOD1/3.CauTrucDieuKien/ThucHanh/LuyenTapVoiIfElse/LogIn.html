@@ -5,6 +5,40 @@
     <title>Login</title>
 </head>
 <body>
-<input>
+<form>
+    <p1>Your ID</p1>
+    <input type="text" id="YourID">
+    <button type="button" onclick="LogIn()">Login</button>
+    <br><br>
+    <h1 id="Messenger"></h1>
+
+
+</form>
+<script>
+    function LogIn() {
+        let ID = document.getElementById("YourID").value;
+        if (ID == "Admin") {
+            let YourPass = prompt(" Your Password : ");
+            switch (YourPass) {
+                case "Master" : {
+                    document.getElementById("Messenger").innerText = "Welcome";
+                    break;
+                }
+                case "" : {
+                    document.getElementById("Messenger").innerText = "Cancelled";
+                    break;
+                }
+                default: {
+                    document.getElementById("Messenger").innerText = "Wrong password";
+                }
+            }
+        }
+        else {
+            document.getElementById("Messenger").innerText = "Your haven't ID?"
+        }
+    }
+
+
+</script>
 </body>
 </html>
