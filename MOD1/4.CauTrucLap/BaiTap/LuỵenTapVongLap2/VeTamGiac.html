@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ tam giác</title>
+</head>
+<body>
+<script>
+    do {
+        number = parseInt(prompt("Nhập vào số hàng cột"));
+    }
+    while (!((number) > 0));
+    for (let i = 0; i < number; i++) {
+        for (let j = 0; j < number; j++) {
+            if (i >= j) {
+                document.write("*");
+            }
+            if (j == number-1) {
+                document.write("<br>");
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

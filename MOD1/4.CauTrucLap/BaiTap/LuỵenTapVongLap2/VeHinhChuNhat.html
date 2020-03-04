@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ Hình Chữ Nhật</title>
+</head>
+<body>
+<script>
+    do {
+        number = parseInt(prompt("Nhập vào số hàng cột"));
+    }
+    while (!((number) > 0));
+    for (let i = 0; i < number; i++) {
+        for (let j = 0; j < number; j++) {
+            switch (i) {
+                case 0 :
+                case (number - 1) : {
+                    document.write("*");
+                    if(j == number - 1)
+                    {
+                        document.write("<br>");
+                    }
+                    break;
+                }
+                default : {
+                    if (j == 0) {
+                        document.write("*");
+                    }
+                    else if (j == number - 1) {
+                        document.write("*");
+                        document.write("<br>");
+                    }
+                    else {
+                        document.write("&nbsp&nbsp");
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

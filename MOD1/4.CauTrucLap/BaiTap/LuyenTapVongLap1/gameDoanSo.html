@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đoán số</title>
+</head>
+<body>
+<script>
+    let sobe = parseInt(prompt("Bạn nhập giá trị số thứ 1 trong khoảng"));
+    let solon = parseInt(prompt("Bạn nhập giá trị số thứ 2 trong khoảng"));
+    let max = solon > sobe ? solon : sobe;
+    if (max == solon) {
+        min = sobe * 1;
+    } else {
+        min = solon * 1;
+    }
+    let random = Math.floor((Math.random() * (max - min + 1) + min));
+    let status = true;
+    let count =0 ;
+    do {
+        let doanso = parseInt(prompt("Nhập số bạn đoán trong khoảng " + min + " đến " + max));
+        switch (doanso) {
+            case random : {
+                status = false;
+                alert("Bạn đoán đúng");
+                break;
+            }
+            default : {
+                count ++;
+                if (doanso < random) {
+                    alert("Bạn nhập bé hơn");
+
+                } else {
+                    alert("Bạn nhập lớn hơn");
+
+                }
+            }
+        }
+    } while ((status == true)&&(count<3))
+    if (count==3){
+        alert("Bạn đã đoán sai 3 lần");
+    }
+    document.write(" Giá trị min :" + min + "<br>" + " Giá trị max :" + max + "<br>" + " Số ngẫu nhiên : " + random + "<br>" + " Số bạn đoán :" + doanso);
+</script>
+</body>
+</html>
