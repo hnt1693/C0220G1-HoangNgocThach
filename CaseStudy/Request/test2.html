@@ -3,36 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../manager.js"></script>
 </head>
 <body>
 <SCRIPT>
-
-    let continuos = true;
-    let selected_menu;
-    do {
-        selected_menu = prompt(" Bạn chọn các tùy chọn sau tương ứng để thực hiện công việc sẽ làm\n" +
-            "1. Xem thông tin các khách hàng\n" +
-            "2. Chỉnh sửa thông tin khách hàng \n" +
-            "3. Hiển thị tiền cần phải trả");
-
-        switch (parseInt(selected_menu)) {
-            case 1:
-            case 2:
-            case 3 : {
-                continuos = false;
-                break;
-            }
-            default : {
-                if (selected_menu === null) {
-                    alert("true:");
-                    continuos=false;
-                    break;
-                }
-            }
-        }
-
-    } while (continuos === true)  ;
-
+    str1 = "12";
+    str2 = "ab";
+    str3 = "14";
+    let check_day = isNaN(parseInt(str1));
+    let check_month = isNaN(parseInt(str2));
+    let check_year = isNaN(parseInt(str3));
+console.log(check_month);
+console.log(check_day);
+ let a = (check_day|check_month);
+ console.log(a);
 </SCRIPT>
 </body>
 </html>
