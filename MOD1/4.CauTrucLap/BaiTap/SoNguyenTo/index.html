@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số nguyên tố</title>
+</head>
+<body>
+<button onclick="InSoNguyenTo()">Kiểm tra 1 số nguyên tố</button>
+<script>
+    function InSoNguyenTo() {
+        do {
+            count = parseInt(prompt("Nhập vào bao nhiêu số nguyên tố cần hiển thị"));
+        }
+        while (!((count) > 0));
+        let dem = 0;
+
+        for (let i = 2; dem < count; i++) {
+            let check = true;
+            for (let j = 2; j <= Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    check = false;
+                    break;
+                }
+            }
+            if (check == true) {
+                dem += 1;
+                document.write(i + "  ");
+            }
+
+        }
+
+
+    }
+</script>
+</body>
+</html>
