@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .register {
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+            margin-top: 3%;
+            padding: 3%;
+        }
+
+        .register-left {
+            text-align: center;
+            color: #fff;
+            margin-top: 4%;
+        }
+
+        .register-left input {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            width: 60%;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #383d41;
+            margin-top: 30%;
+            margin-bottom: 3%;
+            cursor: pointer;
+        }
+
+        .register-right {
+            background: #f8f9fa;
+            border-top-left-radius: 10% 50%;
+            border-bottom-left-radius: 10% 50%;
+        }
+
+        .register-left img {
+            margin-top: 15%;
+            margin-bottom: 5%;
+            width: 25%;
+            -webkit-animation: mover 2s infinite alternate;
+            animation: mover 1s infinite alternate;
+        }
+
+        @-webkit-keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .register-left p {
+            font-weight: lighter;
+            padding: 5%;
+            margin-top: -9%;
+        }
+
+        .register .register-form {
+            padding: 8%;
+            margin-top: 10%;
+        }
+
+        .btnRegister {
+            float: right;
+            margin-top: 10%;
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            background: #0062cc;
+            color: #fff;
+            font-weight: 600;
+            width: 50%;
+            cursor: pointer;
+        }
+
+        .register .nav-tabs {
+            margin-top: 3%;
+            border: none;
+            background: #0062cc;
+            border-radius: 1.5rem;
+            width: 28%;
+            float: right;
+        }
+
+        .register .nav-tabs .nav-link {
+            padding: 2%;
+            height: 34px;
+            font-weight: 600;
+            color: #fff;
+            border-top-right-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+
+        .register .nav-tabs .nav-link:hover {
+            border: none;
+        }
+
+        .register .nav-tabs .nav-link.active {
+            width: 100px;
+            color: #0062cc;
+            border: 2px solid #0062cc;
+            border-top-left-radius: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+        }
+
+        .register-heading {
+            text-align: center;
+            margin-top: 8%;
+            margin-bottom: -15%;
+            color: #495057;
+        }
+
+
+    </style>
+    <script src="myscr.js"></script>
+</head>
+<body onload="document.getElementById('form2').style.display='none';document.getElementById('usersList').style.display='none'">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h2>Welcome</h2>
+            <p>MANAGER APP</p>
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-primary" onclick="show_Form_Add()">Thêm khách hàng</button>
+                <br>
+                <button type="button" class="btn btn-secondary" onclick="show_Form_Edit()">Xem và chỉnh sửa</button>
+                <br>
+                <button type="button" class="btn btn-danger">Tính tiền</button>
+            </div>
+        </div>
+
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                       aria-controls="home" aria-selected="true">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                       aria-controls="profile" aria-selected="false">Hirer</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">THÊM KHÁCH HÀNG</h3>
+
+                    <div class="row register-form">
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Tên khách hàng *" value=""
+                                       id="name"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Ngày sinh DD/MM/YY" value=""
+                                       id="birthday"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" value="" id="email"/>
+                            </div>
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="adress">
+                                    <option disabled="disabled" value = "0" selected="selected">Địa chỉ</option>
+                                    <option value="1">Đà Nẵng</option>
+                                    <option value="2">Hà Nội</option>
+                                    <option value="3">Hồ Chí Minh</option>
+                                    <option value="4">Nơi khác</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="% Giảm giá " value=""
+                                       id="discount"/>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="maxl">
+                                    <label class="radio inline">
+                                        <input type="radio" name="gender" value="Nam" checked>
+                                        <span> Nam </span>
+                                    </label>
+                                    <label class="radio inline">
+                                        <input type="radio" name="gender" value="Nữ">
+                                        <span> Nữ </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="customer">
+                                    <option disabled="disabled" value = "0" selected="selected">Loại customer</option>
+                                    <option value="1">Diamond</option>
+                                    <option value="2">Platium</option>
+                                    <option value="3">Gold</option>
+                                    <option value="4">Silver</option>
+                                    <option value="5">Member</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Số lượng đi kèm" value=""
+                                       id="people"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Số ngày thuê" value=""
+                                       id="rentdays"/>
+                            </div>
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="rentservice">
+                                    <option disabled="disabled" selected="selected">Loại dịch vụ</option>
+                                    <option value="1">Villa</option>
+                                    <option value="2">House</option>
+                                    <option value="3">Room</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="rentroom">
+                                    <option disabled="disabled" selected="selected">Loại Phòng</option>
+                                    <option value="1">Vip</option>
+                                    <option value="2">Bussiness</option>
+                                    <option value="3">Normal</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" class="form-control" onclick="add_User()" value="Xác nhận"
+                                       id="ok_button"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" class="form-control" onclick="show_User()" value="Hủy"
+                                       id="cancel_button"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show active" id="form2" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">CHỈNH SỬA THÔNG TIN</h3>
+
+                    <div class="row register-form">
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <select name="name2" class="form-control" onchange="auto_inf()" id="name2">
+                                    <option disabled="disabled" value="0" selected="selected">Danh sách KH</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Tên khách hàng *" value=""
+                                       id="name23"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Ngày sinh DD/MM/YY" value=""
+                                       id="birthday2"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email" value="" id="email2"/>
+                            </div>
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="adress2">
+                                    <option disabled="disabled" selected="selected">Địa chỉ</option>
+                                    <option value="1">Đà Nẵng</option>
+                                    <option value="2">Hà Nội</option>
+                                    <option value="3">Hồ Chí Minh</option>
+                                    <option value="4">Nơi khác</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="% Giảm giá " value=""
+                                       id="discount2"/>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="maxl">
+                                    <label class="radio inline">
+                                        <input type="radio" name="gender2" value="male" checked>
+                                        <span> Nam </span>
+                                    </label>
+                                    <label class="radio inline">
+                                        <input type="radio" name="gender2" value="female">
+                                        <span> Nữ </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="customer2">
+                                    <option disabled="disabled" selected="selected">Loại customer</option>
+                                    <option value="1">Diamond</option>
+                                    <option value="2">Platium</option>
+                                    <option value="3">Gold</option>
+                                    <option value="4">Silver</option>
+                                    <option value="5">Member</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Số lượng đi kèm" value=""
+                                       id="people2"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Số ngày thuê" value=""
+                                       id="rentdays2"/>
+                            </div>
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="rentservice2">
+                                    <option disabled="disabled" selected="selected">Loại dịch vụ</option>
+                                    <option value="1">Villa</option>
+                                    <option value="2">House</option>
+                                    <option value="3">Room</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="adress" class="form-control" id="rentroom2">
+                                    <option disabled="disabled" selected="selected">Loại Phòng</option>
+                                    <option value="1">Vip</option>
+                                    <option value="2">Bussiness</option>
+                                    <option value="3">Normal</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" class="form-control" onclick="search()" value="Xác nhận"
+                                       id="ok_button2"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" class="form-control" onclick="show_User()" value="Hủy"
+                                       id="cancel_button2"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show active" id="usersList">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

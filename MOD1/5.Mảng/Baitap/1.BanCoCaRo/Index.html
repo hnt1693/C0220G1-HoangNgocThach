@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bàn cờ Caro</title>
+    <style>
+
+    </style>
+</head>
+<body onload="refresh()">
+<script>
+    let banco = [];
+    let size = 12;
+    let nuoc = 0;
+
+    function refresh() {
+
+        for (let i = 0; i < size; i++) {
+            banco_i = [];
+            for (let j = 0; j < size; j++) {
+                let btn = document.createElement("button");
+                btn.value = i + "và" + j; // Create a <button> element
+                // btn.id = i + " " + j;
+                btn.tagName = "buttonx";
+                btn.innerText = " ";
+                btn.style.width = "30px";
+                btn.style.height = "30px";
+                banco_i[j] = "-";
+                btn.onclick = function () {
+                    if (nuoc % 2 === 0) {
+                        btn.innerText = "O";
+                        btn.style.color = "red";
+                        banco[i][j] = "O";
+                        btn.disabled = true;
+                        check_Doc(i, j);
+                        check_Ngang(i, j);
+                        check_Cheochinh(i, j);
+                        check_Cheophu(i, j);
+
+                    } else {
+                        btn.innerText = "X";
+                        btn.style.color = "blue";
+                        banco[i][j] = "X";
+                        btn.disabled = true;
+                        check_Doc(i, j);
+                        check_Ngang(i, j);
+                        check_Cheochinh(i, j);
+                        check_Cheophu(i, j);
+                    }
+                    nuoc++;
+                    console.log(nuoc);
+                }
+                document.body.appendChild(btn);
+            }
+            banco.push(banco_i);
+            let label = document.createElement("label");
+            label.innerText = "\n";
+            document.body.appendChild(label);
+        }
+    }
+
+    function check_Doc(a, b) {
+
+        let j = b;
+        let win = "";
+        for (let c = 0; c < size; c++) {
+            win += banco[c][j];
+        }
+        let check_o = win.indexOf("OOOOO");
+        let check_x = win.indexOf("XXXXX");
+
+        if (nuoc % 2 === 0) {
+            if (check_o > 0) {
+                alert("O win");
+                reload();
+            }
+        } else {
+
+            if (check_x > 0) {
+                alert("X win");
+                reload();
+            }
+        }
+    }
+
+    function check_Ngang(a, b) {
+        let i = a;
+        let win = "";
+        for (let c = 0; c < size; c++) {
+            win += banco[i][c];
+        }
+        let check_o = win.indexOf("OOOOO");
+        let check_x = win.indexOf("XXXXX");
+        if (nuoc % 2 === 0) {
+            if (check_o > 0) {
+                alert("O win");
+                reload();
+            }
+        } else {
+
+            if (check_x > 0) {
+                alert("X win");
+                reload();
+            }
+        }
+
+    }
+
+    function check_Cheochinh(a, b) {
+        let ab = a + b;
+        let win = "";
+        if (ab <= size - 1) {
+            for (let i = 0; i <= ab; i++) {
+                win += banco[i][ab - i];
+            }
+            console.log(win);
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o > 0) {
+                    alert("O Win");
+                    reload();
+                }
+            } else {
+
+                if (check_x > 0) {
+                    alert("X win");
+                    reload();
+                }
+            }
+        } else {
+            for (let j = ab - size + 1; j <= size - 1; j++) {
+                win += banco[ab - j][j];
+            }
+            console.log(win);
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o > 0) {
+                    alert("O Win");
+                    reload();
+                }
+            } else {
+
+                if (check_x > 0) {
+                    alert("X win");
+                    reload();
+                }
+            }
+        }
+    }
+
+    function check_Cheophu(a, b) {
+        let ab = (a - b);
+        let win = "";
+        if (ab >= 0) {
+            for (let i = ab; i <= size - 1; i++) {
+                win += banco[i][i - ab];
+            }
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o > 0) {
+                    alert("O Win");
+                    reload();
+                }
+            } else {
+
+                if (check_x > 0) {
+                    alert("X win");
+                    reload();
+                }
+            }
+
+        } else {
+            for (let j = Math.abs(ab); j <= size - 1; j++) {
+                win += banco[j - Math.abs(ab)][j];
+            }
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o > 0) {
+                    alert("O Win");
+                    reload();
+                }
+            } else {
+
+                if (check_x > 0) {
+                    alert("X win");
+                    reload();
+                }
+            }
+        }
+    }
+
+    function reload() {
+        let x = confirm("Bạn muốn chơi lại không");
+        if (x) {
+            location.reload();
+        }
+
+    }
+
+</script>
+</body>
+</html>

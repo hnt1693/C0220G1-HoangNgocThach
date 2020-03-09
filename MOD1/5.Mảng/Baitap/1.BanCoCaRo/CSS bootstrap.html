@@ -1,0 +1,244 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <STYLE>
+        .button {
+            background-color: lightslategrey; /* Green */
+            border: cadetblue;
+            color: white;
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 1px 1px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            border-radius: 2px;
+        }
+
+        .button2 {
+            border-radius: 4px;
+        }
+
+        .button3 {
+            border-radius: 8px;
+        }
+
+        .button4 {
+            border-radius: 12px;
+        }
+
+        .button5 {
+            border-radius: 50%;
+        }
+    </STYLE>
+</head>
+<body onload="refresh()">
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script>
+    let banco = [];
+    let size = 12;
+    let nuoc = 0;
+
+    function refresh() {
+
+        for (let i = 0; i < size; i++) {
+            banco_i = [];
+            for (let j = 0; j < size; j++) {
+                let btn = document.createElement("button");
+                // Create a <button> element
+                // <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
+                btn.innerText = " ";
+                btn.className = "button button1";
+                // btn.style.width = "40px";
+                // btn.style.height = "40px";
+                banco_i[j] = "-";
+                btn.onclick = function () {
+                    if (nuoc % 2 === 0) {
+                        btn.innerText = "O";
+
+                        btn.style.color = "red";
+                        banco[i][j] = "O";
+                        btn.disabled = true;
+                        check_Doc(i, j);
+                        check_Ngang(i, j);
+                        check_Cheochinh(i, j);
+                        check_Cheophu(i, j);
+
+                    } else {
+                        btn.innerText = "X";
+                        btn.style.color = "blue";
+                        banco[i][j] = "X";
+                        btn.disabled = true;
+                        check_Doc(i, j);
+                        check_Ngang(i, j);
+                        check_Cheochinh(i, j);
+                        check_Cheophu(i, j);
+                    }
+                    nuoc++;
+                    console.log(nuoc);
+                }
+                document.body.appendChild(btn);
+            }
+            banco.push(banco_i);
+            let label = document.createElement("br");
+            label.innerText;
+            document.body.appendChild(label);
+        }
+    }
+
+    function check_Doc(a, b) {
+        let j = b;
+        let win = "";
+        for (let c = 0; c < size; c++) {
+            win += banco[c][j];
+        }
+
+        let check_o = win.indexOf("OOOOO");
+        let check_x = win.indexOf("XXXXX");
+        if (nuoc % 2 === 0) {
+            if (check_o >= 0) {
+                alert("O win");
+
+            }
+        } else {
+            if (check_x >= 0) {
+                alert("X win");
+            }
+        }
+        console.log(win + " " + check_o + " " + check_x);
+    }
+
+    function check_Ngang(a, b) {
+        let i = a;
+        let win = "";
+        for (let c = 0; c < size; c++) {
+            win += banco[i][c];
+        }
+        let check_o = win.indexOf("OOOOO");
+        let check_x = win.indexOf("XXXXX");
+        if (nuoc % 2 === 0) {
+            if (check_o >= 0) {
+                alert("O win");
+            }
+        } else {
+
+            if (check_x >= 0) {
+                alert("X win");
+            }
+        }
+
+    }
+
+    function check_Cheochinh(a, b) {
+        let ab = a + b;
+        let win = "";
+        if (ab <= size - 1) {
+            for (let i = 0; i <= ab; i++) {
+                win += banco[i][ab - i];
+            }
+            console.log(win);
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o >= 0) {
+                    alert("O Win");
+                }
+            } else {
+
+                if (check_x >= 0) {
+                    alert("X win");
+                }
+            }
+        } else {
+            for (let j = ab - size + 1; j <= size - 1; j++) {
+                win += banco[ab - j][j];
+            }
+            console.log(win);
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o >= 0) {
+                    alert("O Win");
+                }
+            } else {
+
+                if (check_x >= 0) {
+                    alert("X win");
+                }
+            }
+        }
+    }
+
+    function check_Cheophu(a, b) {
+        let ab = (a - b);
+        let win = "";
+        if (ab >= 0) {
+            for (let i = ab; i <= size - 1; i++) {
+                win += banco[i][i - ab];
+            }
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o >= 0) {
+                    alert("O Win");
+                }
+            } else {
+
+                if (check_x >= 0) {
+                    alert("X win");
+                }
+            }
+
+        } else {
+            for (let j = Math.abs(ab); j <= size - 1; j++) {
+                win += banco[j - Math.abs(ab)][j];
+            }
+            let check_o = win.indexOf("OOOOO");
+            let check_x = win.indexOf("XXXXX");
+            if (nuoc % 2 === 0) {
+
+                if (check_o >= 0) {
+                    alert("O Win");
+                }
+            } else {
+
+                if (check_x >= 0) {
+                    alert("X win");
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
