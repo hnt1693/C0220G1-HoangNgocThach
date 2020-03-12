@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <STYLE>
+        .header-container {
+            background-color: #48aac9;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            height: auto;
+            width: auto;
+            border-radius: 5px;
+
+        }
+
+        .margin-col-3 {
+            background-color: #5a6268;
+            margin: 10px;
+            margin-right: 10px;
+            height: auto;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .form-control {
+            background-color: #0ea9c9;
+        }
+
+        .margin-col-9 {
+            background-color: #9fcdff;
+            margin: 10px auto;
+            margin-right: 10px;
+            height: auto;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .margin-col-head {
+
+            margin: 10px auto;
+            height: 50px;
+            width: auto;
+            text-align: center;
+            padding: 10px
+
+        }
+
+        #datepicker {
+            width: 180px;
+            margin: 0 20px 20px 20px;
+        }
+
+        #datepicker > span:hover {
+            cursor: pointer;
+        }
+
+        .row-2 {
+            margin: 10px auto;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </STYLE>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <script>
+        $(document).ready(function () {
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: 'dd/mm/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+    <script src="myJs.js"></script>
+
+
+</head>
+<body onload="showform_Add()">
+<div class="container header-container">
+    <div class="row">
+        <div class="col-md-3 row">
+            <div class="col-md-12 row-2"
+                 style="background-color: #9fcdff; height: auto;width: auto;margin-right: -5px">
+                <div class="text-center">
+                    <img src="img/logo_transparent.png" style="width: 200px;height: auto" class="rounded" alt="...">
+                </div>
+                <ul class="list-group" style="margin-bottom: 10px;">
+                    <li class="list-group-item">Information</li>
+                    <li class="list-group-item">Email : hnt1693@gmail.com</li>
+                    <li class="list-group-item">SDT : 0915.455.131</li>
+                    <li class="list-group-item">Student in Codegym</li>
+                    <li class="list-group-item">https://www.facebook.com/
+                    <li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 margin-col-9" id="form_Add">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-transparent"
+                     style="margin-right: -30px;margin-left: -30px">
+                    <a STYLE="color: green" class="navbar-brand" id="home">FURAMA</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a onclick="showform_Add()" class="nav-link" href="#">THÊM KHÁCH HÀNG<span
+                                        class="sr-only"
+                                        id="add_user">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="user_List" class="nav-link" href="#" onclick="users_List()">DANH SÁCH KHÁCH
+                                    HÀNG</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+
+                    </div>
+                </nav>
+
+
+            </div>
+            <div class="col-md margin-col-head" STYLE="font-size: 25px;">THÔNG TIN KHÁCH HÀNG</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form name="form_add">
+                        <div class="form-group">
+                            <label>Tên khách hàng</label>
+                            <input type="text" value="Haha" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label>CMND</label>
+                            <input type="number" class="form-control" id="cmnd">
+                        </div>
+                        <div class="form-group"> <!-- Date input -->
+                            <label class="control-label">Ngày sinh</label>
+                            <input class="form-control" id="birthday" name="date" placeholder="DD/MM/YYY"
+                                   type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Địa điểm</label>
+                            <select class="form-control" id="adress">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Hà Nội</option>
+                                <option value="2">Đà Nẵng</option>
+                                <option value="3">Hồ Chí Minh</option>
+                                <option value="4">Nơi khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Giảm giá (%)</label>
+                            <input type="number" class="form-control" id="discount">
+                        </div>
+                        <div class="form-group">
+                            <div class="maxl">
+                                <label class="radio inline">
+                                    <input type="radio" name="Gender" value="Nam" checked>
+                                    <span> Nam </span>
+                                </label>
+                                <label class="radio inline">
+                                    <input type="radio" name="Gender" value="Nữ">
+                                    <span> Nữ </span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form name="form_add">
+                        <div class="form-group">
+                            <label class="control-label">Loại Customer</label>
+                            <select class="form-control" id="customer">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Diamond</option>
+                                <option value="2">Platium</option>
+                                <option value="3">Gold</option>
+                                <option value="4">Silver</option>
+                                <option value="5">Member</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group"> <!-- Date input -->
+                            <label class="control-label">Ngày thuê</label>
+                            <input class="form-control" id="rentedday" name="date" placeholder="DD/MM/YYY"
+                                   type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Số người đi cùng</label>
+                            <input type="number" class="form-control" id="people">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Loại dịch vụ</label>
+                            <select class="form-control" id="rentservice">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Vip</option>
+                                <option value="2">Villa</option>
+                                <option value="3">House</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Loại phòng</label>
+                            <select class="form-control" id="rentroom">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Vip</option>
+                                <option value="2">Busisness</option>
+                                <option value="3">Normal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div class="btn btn-dark form-control" style=" margin-top: 7px;width: 195px" id="ok"
+                                 onclick="add_User()">XÁC NHẬN
+                            </div>
+                            <div class="btn btn-danger form-control"
+                                 style="margin-top: 7px;width: 195px" id="cancel"
+                                 style="text-align: right"
+                                 onclick="refresh()">HỦY
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-9 margin-col-9" id="form_usersList">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-transparent"
+                     style="margin-right: -30px;margin-left: -30px">
+                    <a STYLE="color: green" class="navbar-brand" id="home">FURAMA</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a onclick="showform_Add()" class="nav-link" href="#">THÊM KHÁCH HÀNG<span
+                                        class="sr-only"
+                                        id="add_user">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="user_List" class="nav-link" href="#" onclick="users_List()">DANH SÁCH KHÁCH
+                                    HÀNG</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+
+                    </div>
+                </nav>
+
+
+            </div>
+            <div class="col-md margin-col-head" STYLE="font-size: 25px;"> DANH SÁCH KHÁCH
+                HÀNG
+            </div>
+            <div class="col-md margin-col-9-head" style="width: auto">
+                <table class="table table-borderless margin-col-9" id="tableList"
+                       style="background-color: #9fcdff;text-align: center">
+
+                </table>
+
+            </div>
+
+
+        </div>
+        <div class="col-md-9 margin-col-9" id="form_Infor">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-transparent"
+                     style="margin-right: -30px;margin-left: -30px">
+                    <a STYLE="color: green" class="navbar-brand" id="home">FURAMA</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a onclick="showform_Add()" class="nav-link" href="#">THÊM KHÁCH HÀNG<span
+                                        class="sr-only"
+                                        id="add_user">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="user_List" class="nav-link" href="#" onclick="users_List()">DANH SÁCH KHÁCH
+                                    HÀNG</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+
+                    </div>
+                </nav>
+
+
+            </div>
+            <div class="col-md margin-col-head" STYLE="font-size: 25px">XEM VÀ CHỈNH SỬA THÔNG TIN KHÁCH HÀNG</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label>Tên khách hàng</label>
+                            <input type="text" value="Haha" class="form-control" id="name2">
+                        </div>
+                        <div class="form-group">
+                            <label for="1973214284">CMND</label>
+                            <input type="number" class="form-control" id="cmnd2">
+                        </div>
+                        <div class="form-group"> <!-- Date input -->
+                            <label class="control-label">Ngày sinh</label>
+                            <input class="form-control" id="birthday2" name="date" placeholder="DD/MM/YYY"
+                                   type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="email2">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Địa điểm</label>
+                            <select class="form-control" id="adress2">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Hà Nội</option>
+                                <option value="2">Đà Nẵng</option>
+                                <option value="3">Hồ Chí Minh</option>
+                                <option value="4">Nơi khác</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Giảm giá (%)</label>
+                            <input type="number" class="form-control" id="discount2">
+                        </div>
+                        <div class="form-group">
+                            <div class="maxl">
+                                <label class="radio inline">
+                                    <input type="radio" name="Gender2" value="Nam" checked>
+                                    <span> Nam </span>
+                                </label>
+                                <label class="radio inline">
+                                    <input type="radio" name="Gender2" value="Nữ">
+                                    <span> Nữ </span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form>
+                        <div class="form-group">
+                            <label class="control-label">Loại Customer</label>
+                            <select class="form-control" id="customer2">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Diamond</option>
+                                <option value="2">Platium</option>
+                                <option value="3">Gold</option>
+                                <option value="4">Silver</option>
+                                <option value="5">Member</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group"> <!-- Date input -->
+                            <label class="control-label">Ngày thuê</label>
+                            <input class="form-control" id="rentedday2" name="date" placeholder="DD/MM/YYY"
+                                   type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Số người đi cùng</label>
+                            <input type="number" class="form-control" id="people2">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Loại dịch vụ</label>
+                            <select class="form-control" id="rentservice2">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Vip</option>
+                                <option value="2">Villa</option>
+                                <option value="3">House</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Loại phòng</label>
+                            <select class="form-control" id="rentroom2">
+                                <option disabled value="0" selected="selected">Vui lòng chọn</option>
+                                <option value="1">Vip</option>
+                                <option value="2">Busisness</option>
+                                <option value="3">Normal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <div class="btn btn-dark" style="margin-top: 7px;width: 195px" id="ok"
+                                 onclick="modified()">
+                                XÁC
+                                NHẬN
+                            </div>
+                            <div class="btn btn-danger" style="margin-top: 7px;width: 195px" id="cancel"
+                                 style="text-align: right">HỦY
+                            </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
