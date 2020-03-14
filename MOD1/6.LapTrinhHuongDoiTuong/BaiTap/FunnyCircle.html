@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="setTimeout(ramdom_Circle,500,Circle1)">
+<canvas id="canvas" height="500" width="500" style="background-color: lightslategrey"></canvas>
+<button onclick="ramdom_Circle(Circle1);">OK</button>
+<script>
+    class Circle {
+        constructor(x, y, radius) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.Draw = function () {
+                var c = document.getElementById("canvas");
+                var ctx = c.getContext("2d");
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = "red";
+                ctx.fill();
+                setTimeout(function () {
+                    ctx.clearRect(0, 0, 500, 500)
+                }, 200);
+            }
+
+        }
+    }
+
+    let dem = 0;
+
+    function ramdom_Circle(circle) {
+
+        let x = circle.x;
+        let y = circle.y;
+        circle.x = x + (Math.floor(Math.random() * 100) - 50);
+        circle.y = y + (Math.floor(Math.random() * 100) - 50);
+        circle.Draw();
+        console.log(dem);
+        setTimeout(ramdom_Circle, 250, circle);
+
+    }
+
+    let Circle1 = new Circle(100, 200, 20);
+
+</script>
+</body>
+</html>

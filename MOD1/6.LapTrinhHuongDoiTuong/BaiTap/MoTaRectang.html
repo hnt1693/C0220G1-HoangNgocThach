@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas style="position: absolute;top:50%;right: 50%" id="myCanvas"></canvas>
+<script>
+    class Rectang {
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        get Area() {
+            return this.width * this.height;
+        }
+
+        get Perimeter() {
+            return 2 * (this.width + this.height)
+        }
+
+        get Draw() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.moveTo(0, 0);
+            ctx.lineTo(0, this.width);
+            ctx.stroke();
+            ctx.lineTo(this.height, this.width);
+            ctx.stroke();
+            ctx.lineTo(this.height, 0);
+            ctx.stroke();
+            ctx.lineTo(0, 0);
+            ctx.stroke();
+        }
+    }
+
+    let Rectang1 = new Rectang(100, 300);
+    Rectang1.Draw;
+    alert("Diện tích là " + Rectang1.Area+" và Chu vi là " + Rectang1.Perimeter);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<SCRIPT>
+    class MobilePhone {
+        constructor() {
+            this.dataInbox = [];
+            this.dataOutbox = [];
+            this.send = function (sms, toMB) {
+                toMB.dataInbox.push(sms);
+                this.dataOutbox.push(sms);
+            }
+        }
+        get checkInbox() {
+            return this.dataInbox;
+        }
+        get CheckOutbox() {
+            return this.dataOutbox;
+        }
+    }
+    let Blackberry = new MobilePhone()
+    let Iphone = new MobilePhone();
+    Iphone.send("Hoàng Ngọc Thạch", Blackberry);
+    Iphone.send("Trần Quang Tuấn", Blackberry);
+    Blackberry.send("Chào iphone nhé", Iphone);
+    alert(Blackberry.CheckOutbox)
+    alert(Blackberry.checkInbox);
+    alert(Iphone.CheckOutbox);
+</SCRIPT>
+</body>
+</html>

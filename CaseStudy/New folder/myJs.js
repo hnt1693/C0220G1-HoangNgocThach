@@ -250,14 +250,14 @@ function users_List() {
     showform_UsersList();
     let tableHtml = "<table class='table table-striped'>" +
         "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Birthday</th><th>Actions</th></tr>";
-    users.forEach((user, index) => {
-            tableHtml += "<tr>" + "<td>" + (index + 1) + "</td>" +
+    let id = 1;
+    users.forEach((user) => {
+            tableHtml += "<tr>" + "<td>" + id + "</td>" +
                 "<td style='text-align: left'>" + user["name"] + "</td>" +
                 "<td >" + user["sex"] + "</td>" +
                 "<td>" + user["birthday"] + "</td>" +
-                "<td><button class = \"btn btn-info" + "\"  id=\"edit" + index + "\" onclick='editUser(" + (index) + ")'>Edit</button>  " +
-                "<button class = \"btn btn-danger" + "\"  id=\"delete" + index + "\" onclick='delete_User(" + (index) + ")'>Delete</button>  " +
-                "<button data-toggle=\"modal\" data-target=\"#centralModalSuccess\" class = \"btn btn-success" + "\"  id=\"bill" + index + "\" onclick='bill(" + (index) + ")'>Tính tiền</button></td>";
+                "<td><button class = \"btn btn-info" + "\"  id=\"edit" + id + "\" onclick='editUser(" + (id - 1) + ")'>Edit</button>  <button class = \"btn btn-danger" + "\"  id=\"delete" + id + "\" onclick='delete_User(" + (id - 1) + ")'>Delete</button>  <button class = \"btn btn-success" + "\"  id=\"delete" + id + "\" onclick='bill(" + (id - 1) + ")'>Tính tiền</button></td>";
+            id = id + 1;
         }
     );
     document.getElementById("tableList").innerHTML = tableHtml;
@@ -410,7 +410,7 @@ function rentDays(id) {
     let date_rent = new Date(users[id].rentedday);
     var Difference_In_Time = date_now - date_rent;
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-    let thap_phan = Difference_In_Days - Math.floor(Difference_In_Days);
+        let thap_phan = Difference_In_Days - Math.floor(Difference_In_Days);
     let rentdays;
     if (thap_phan < 0.2) {
         rentdays = Math.floor(Difference_In_Days);
@@ -491,19 +491,6 @@ function bill(id) {
             break;
         }
     }
-    let cost_total = cost_service * rentDays(id) - total_discount;
-    document.getElementById("p1name").innerText = "Khách hàng :" + users[id].name;
-    document.getElementById("p2adress").innerText = "Địa chỉ :" + users[id].adress;
-    document.getElementById("p3rentedday").innerText = "Ngày bắt đầu thuê :" + users[id].rentedday + " . Số ngày thuê :" + rentDays(id);
-    document.getElementById("p4timenow").innerText = "TỔNG SỐ TIỀN CẦN THANH TOÁN LÀ " + cost_total + "$";
-    let x = document.getElementById("accept_pay").onclick = function () {
-        accept_Pay(id);
-    }
+    let cost_total = cost_service*rentDays(id) - total_discount;
+    alert(cost_total+ "$");
 }
-
-function accept_Pay(id) {
-    document.getElementById("bill" + id).innerText = " Đã thanh toán";
-    document.getElementById("bill" + id).disabled = true;
-
-}
-

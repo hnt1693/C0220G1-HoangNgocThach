@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type = "text/javascript">
+    class Temperature {
+        constructor(celsius) {
+            this.celsius=celsius;
+        }
+        get getCelsius(){
+          return (this.celsius);
+        }
+        get changeCtoF(){
+          return (this.celsius*1.8 + 32);
+        }
+    }
+    let nhiet_do= prompt("Nhập vào nhiệt độ C bạn cần chuyển sang độ F");
+    let temp = new Temperature(nhiet_do);
+    alert("Nhiệt độ từ " + temp.getCelsius + " độ C sang độ F là "+temp.changeCtoF);
+</script>
+</body>
+</html>

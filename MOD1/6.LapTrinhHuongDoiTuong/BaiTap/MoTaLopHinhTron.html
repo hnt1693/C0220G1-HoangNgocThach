@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" style="border:1px solid #d3d3d3;" height="800px" width="800px"></canvas>
+<script>
+    class Circle {
+        constructor(radius, color) {
+            this.radius = radius;
+            this.color = color;
+            this.Parameter = function () {
+                alert("Đường tròn này có diện tích là " + this.Area() + " màu " + this.color);
+            }
+            this.Area = function () {
+                alert(Math.pow(this.radius, 2) * Math.PI);
+            }
+
+        }
+        Draw() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(400, 400, this.radius, 0,2 * Math.PI);
+            ctx.stroke();
+        }
+    }
+    let Circle1 = new Circle(200, "green");
+    Circle1.Draw();
+    Circle1.Parameter();
+</script>
+</body>
+</html>
