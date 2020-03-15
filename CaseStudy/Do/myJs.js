@@ -11,7 +11,8 @@ users[0] = {
     rentedday: "03/05/2020",
     people: "15",
     rentservice: "House",
-    rentroom: "Vip"
+    rentroom: "Vip",
+    paid: false
 
 };
 users[1] = {
@@ -26,7 +27,8 @@ users[1] = {
     people: "15",
     rentservice: "House",
     rentroom: "Vip",
-    cmnd: "197215814"
+    cmnd: "197215814",
+    paid: false
 };
 users[2] = {
     name: "Nguyễn Xuân Khánh",
@@ -40,7 +42,8 @@ users[2] = {
     people: "15",
     rentservice: "House",
     rentroom: "Vip",
-    cmnd: "197215845"
+    cmnd: "197215845",
+    paid: true
 };
 var getProperty = function (index, propertyName) {
 
@@ -48,9 +51,8 @@ var getProperty = function (index, propertyName) {
 };
 
 function add_User() {
-    let add_accept = 0;
-    let name_check = 0;
-
+    let add_accept;
+    let name_check;
     let name = document.getElementById("name");
     let birthday = document.getElementById("birthday");
     let email = document.getElementById("email");
@@ -65,13 +67,20 @@ function add_User() {
     let rentroom = document.getElementById("rentroom");
 
     if (name.value !== null) {
-        if (name.value === "") {
+        if (name.value.length === 0) {
             name_check = 0;
+            document.getElementById("name").style.backgroundColor='#ff5252';
         } else {
             name_check = 1;
+            document.getElementById("name").style.backgroundColor='#66bb6a';
         }
-    } else {
-        alert("Vui long")
+    }
+
+   if (birthday.value.length===0){
+       document.getElementById("birthday").style.backgroundColor='#ff5252';
+   }
+    if (renteddays.value.length===0){
+        document.getElementById("rentedday").style.backgroundColor='#ff5252';
     }
     check_Email(email.value);
     check_Adress(adress.selectedIndex);
@@ -108,7 +117,8 @@ function add_User() {
                 rentedday: renteddays.value,
                 people: people.value,
                 rentservice: rentservice_value,
-                rentroom: rentroom_value
+                rentroom: rentroom_value,
+                paid: false
             });
             users_List();
         }
@@ -121,7 +131,6 @@ function add_User() {
 
 
 function check_Email(email) {
-
     let a_cong;
     let dot;
     let dem_a = 0;
@@ -141,29 +150,47 @@ function check_Email(email) {
             space = i;
         }
     }
+
+     if (email.length===0){
+         email_check = 0;
+         document.getElementById('email').style.backgroundColor = '#ff5252';
+     }
     if (a_cong === 0) {
-        return email_check = 0;
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252';
     } else if (space >= 0) {
-        return email_check = 0;
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252';
     } else if (dot === email.length - 1) {
-        return email_check = 0;
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252';
     } else if ((a_cong === undefined) | (dot === undefined)) {
-        return email_check = 0;
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252'
     } else if (a_cong === dot - 1) {
-        return email_check = 0;
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252'
     } else if ((dem_dot > 1) | (dem_a > 1)) {
-        return email_check = 0;
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252'
     } else {
-        return email_check = 1;
+        email_check = 1;
+        document.getElementById('email').style.backgroundColor = '#66bb6a';
     }
+
+
+    return email_check;
 }
 
 function check_Adress(index) {
     if (index === 0) {
-        return adress_check = 0;
+        adress_check = 0;
+        document.getElementById('adress').style.backgroundColor = '#ff5252';
     } else {
-        return adress_check = 1;
+        document.getElementById('adress').style.backgroundColor = '#66bb6a';
+        adress_check = 1;
     }
+    return adress_check;
 }
 
 function check_Discount(index) {
@@ -171,29 +198,36 @@ function check_Discount(index) {
     if (index !== "") {
         let so_nguyen = Number.isInteger(parseInt(index));
         if (!so_nguyen) {
-            return discount_check = 0;
+            discount_check = 0;
+            document.getElementById('discount').style.backgroundColor = "#ff5252";
         } else {
             if ((parseInt(index) >= 0) && (parseInt(index) <= 100)) {
-
-                return discount_check = 1;
+                document.getElementById('discount').style.backgroundColor = "#66bb6a";
+                discount_check = 1;
             } else {
-                return discount_check = 0;
+                discount_check = 0;
+                document.getElementById('discount').style.backgroundColor = "#ff5252";
             }
         }
     } else {
-        return discount_check = 0;
-
+        discount_check = 0;
+        document.getElementById('discount').style.backgroundColor = "#ff5252";
     }
+    return discount_check;
 }
 
 function check_Customer(index) {
 
 
     if (index === 0) {
-        return customer_check = 0;
+        customer_check = 0;
+        document.getElementById('customer').style.backgroundColor = '#ff5252';
+
     } else {
-        return customer_check = 1;
+        customer_check = 1;
+        document.getElementById('customer').style.backgroundColor = '#66bb6a';
     }
+    return customer_check
 }
 
 function check_People(index) {
@@ -202,65 +236,87 @@ function check_People(index) {
     if (index !== "") {
         let so_nguyen = Number.isInteger(parseInt(index));
         if (!so_nguyen) {
-
-            return people_check = 0;
+            document.getElementById('people').style.backgroundColor = '#ff5252';
+            people_check = 0;
         } else {
             if (parseInt(index) >= 0) {
-
-                return people_check = 1;
+                document.getElementById('people').style.backgroundColor = '#66bb6a';
+                people_check = 1;
             } else {
-
-                return people_check = 0;
+                document.getElementById('people').style.backgroundColor = '#ff5252';
+                people_check = 0;
             }
         }
     } else {
-
-        return people_check = 0;
+        document.getElementById('people').style.backgroundColor = '#ff5252';
+        people_check = 0;
     }
+    return people_check;
 }
 
 function check_Rentservice(index) {
 
 
     if (index === 0) {
-        return rentservice_check = 0;
+        rentservice_check = 0;
+        document.getElementById('rentservice').style.backgroundColor = '#ff5252';
     } else {
-        return rentservice_check = 1;
+        rentservice_check = 1;
+        document.getElementById('rentservice').style.backgroundColor = '#66bb6a';
     }
+    return rentservice_check;
 }
 
 function check_Room(index) {
 
     if (index === 0) {
-        return rentroom_check = 0;
+        rentroom_check = 0;
+        document.getElementById('rentroom').style.backgroundColor = '#ff5252';
+
     } else {
-        return rentroom_check = 1;
-    }
+        rentroom_check = 1;
+        document.getElementById('rentroom').style.backgroundColor = '#66bb6a';
+
+    }return rentroom_check;
 }
 
 function check_Cmnd(index) {
-
     if ((index > 0) && (index.length === 9)) {
-        return check_cmnd = 1;
-    } else
-        return check_cmnd = 0;
+        check_cmnd = 1;
+        document.getElementById("cmnd").style.backgroundColor = '#66bb6a';
+    } else {
+        check_cmnd = 0;
+        document.getElementById("cmnd").style.backgroundColor = '#ff5252';
+    }
+    return check_cmnd;
 }
 
 function users_List() {
     showform_UsersList();
     let tableHtml = "<table class='table table-striped'>" +
         "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Birthday</th><th>Actions</th></tr>";
+
     users.forEach((user, index) => {
+            let button3;
+            if (user["paid"] === true) {
+                button3 = "Đã thanh toán";
+            } else {
+                button3 = "Tính tiền";
+            }
             tableHtml += "<tr>" + "<td>" + (index + 1) + "</td>" +
                 "<td style='text-align: left'>" + user["name"] + "</td>" +
                 "<td >" + user["sex"] + "</td>" +
                 "<td>" + user["birthday"] + "</td>" +
-                "<td><button class = \"btn btn-info" + "\"  id=\"edit" + index + "\" onclick='editUser(" + (index) + ")'>Edit</button>  " +
-                "<button class = \"btn btn-danger" + "\"  id=\"delete" + index + "\" onclick='delete_User(" + (index) + ")'>Delete</button>  " +
-                "<button data-toggle=\"modal\" data-target=\"#centralModalSuccess\" class = \"btn btn-success" + "\"  id=\"bill" + index + "\" onclick='bill(" + (index) + ")'>Tính tiền</button></td>";
+                "<td><button class = \"btn btn-primary btn-sm" + "\"  id=\"edit" + index + "\" onclick='editUser(" + (index) + ")'>Edit<i class=\"fas fa-edit pl-1\"></i></button>  " +
+                "<button class = \"btn btn-danger btn-sm" + "\"  id=\"delete" + index + "\" onclick='delete_User(" + (index) + ")'>Delete<i class=\"fas fa-trash-alt pl-1\"></i></button>  " +
+                "<button data-toggle=\"modal\" id=\"bill" + index + "\"   data-target=\"#centralModalSuccess\" class = \"btn btn-success btn-sm" + "\" style = 'width:150px ' onclick='bill(" + (index) + ")'>" + button3 + "<i class=\"fas fa-dollar-sign\"></i></button></td>";
         }
     );
+
     document.getElementById("tableList").innerHTML = tableHtml;
+    for (let i = 0; i < users.length; i++) {
+        document.getElementById("bill" + i).disabled = users[i].paid;
+    }
 }
 
 function editUser(id) {
@@ -302,8 +358,7 @@ function editUser(id) {
 }
 
 function modified() {
-
-    showform_Infor()
+    showform_Infor();
     let add_accept = 0;
     let name_check = 0;
     let name = document.getElementById("name2");
@@ -346,6 +401,7 @@ function modified() {
         }
     }
     add_accept = name_check + email_check + check_cmnd + discount_check + people_check;
+    let paid_now = users[id_edit].paid;
     // console.log(name_check + " " + email_check + " " + check_cmnd + " " + adress_check + " " + discount_check + " " + customer_check + " " + people_check + " " + rentroom_check + " " + rentservice_check);
 
     ;
@@ -364,10 +420,12 @@ function modified() {
                 rentedday: renteddays.value,
                 people: people.value,
                 rentservice: rentservice_value,
-                rentroom: rentroom_value
+                rentroom: rentroom_value,
+                paid: paid_now
             };
         }
         users_List();
+        console.log(users[id_edit].paid);
     }
 }
 
@@ -397,6 +455,40 @@ function showform_Add() {
     document.getElementById("form_Add").style.display = "block";
     document.getElementById("form_usersList").style.display = "none";
     document.getElementById("form_Infor").style.display = "none";
+    let name = document.getElementById("name");
+    name.value = "";
+    name.style.backgroundColor = "white";
+    let birthday = document.getElementById("birthday");
+    birthday.value = "";
+    birthday.style.backgroundColor = 'white';
+    let email = document.getElementById("email");
+    email.value = "";
+    email.style.backgroundColor = 'white';
+    let adress = document.getElementById("adress");
+    adress.selectedIndex = 0;
+    adress.style.backgroundColor = "white";
+    let discount = document.getElementById("discount");
+    discount.value = "";
+    discount.style.backgroundColor = "white";
+    let customer = document.getElementById("customer");
+    customer.selectedIndex = 0;
+    customer.style.backgroundColor = "white";
+    let people = document.getElementById("people");
+    people.value = "";
+    people.style.backgroundColor = 'white';
+    let cmnd = document.getElementById("cmnd");
+    cmnd.value = "";
+    cmnd.style.backgroundColor = 'white';
+    let renteddays = document.getElementById("rentedday");
+    renteddays.value = "";
+    renteddays.style.backgroundColor = 'white';
+    let rentservice = document.getElementById("rentservice");
+    rentservice.selectedIndex = 0;
+    rentservice.style.backgroundColor = "white";
+    let sex = document.getElementsByName("Gender");
+    let rentroom = document.getElementById("rentroom");
+    rentroom.selectedIndex = 0;
+    rentroom.style.backgroundColor = "white";
 }
 
 function showform_Infor() {
@@ -417,7 +509,7 @@ function rentDays(id) {
     } else {
         rentdays = Math.ceil(Difference_In_Days);
     }
-    return rentdays;
+    return parseInt(rentdays);
 }
 
 function bill(id) {
@@ -497,13 +589,38 @@ function bill(id) {
     document.getElementById("p3rentedday").innerText = "Ngày bắt đầu thuê :" + users[id].rentedday + " . Số ngày thuê :" + rentDays(id);
     document.getElementById("p4timenow").innerText = "TỔNG SỐ TIỀN CẦN THANH TOÁN LÀ " + cost_total + "$";
     let x = document.getElementById("accept_pay").onclick = function () {
-        accept_Pay(id);
+        users[id].paid = true;
+        users_List();
+
     }
 }
 
 function accept_Pay(id) {
-    document.getElementById("bill" + id).innerText = " Đã thanh toán";
-    document.getElementById("bill" + id).disabled = true;
+    let tableHtml = "<table class='table table-striped'>" +
+        "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Birthday</th><th>Actions</th></tr>";
+
+    // users.forEach((user, index) => {
+    //         let button3;
+    //         if (user["paid"] === true) {
+    //             button3 = "Đã thanh toán";
+    //         } else {
+    //             button3 = "Tính tiền";
+    //         }
+    //         tableHtml += "<tr>" + "<td>" + (index + 1) + "</td>" +
+    //             "<td style='text-align: left'>" + user["name"] + "</td>" +
+    //             "<td >" + user["sex"] + "</td>" +
+    //             "<td>" + user["birthday"] + "</td>" +
+    //             "<td><button class = \"btn btn-primary btn-sm" + "\"  id=\"edit" + index + "\" onclick='editUser(" + (index) + ")'>Edit<i class=\"fas fa-edit pl-1\"></i></button>  " +
+    //             "<button class = \"btn btn-danger btn-sm" + "\"  id=\"delete" + index + "\" onclick='delete_User(" + (index) + ")'>Delete<i class=\"fas fa-trash-alt pl-1\"></i></button>  " +
+    //             "<button data-toggle=\"modal\" id=\"bill" + index + "\"   data-target=\"#centralModalSuccess\" class = \"btn btn-success btn-sm" + "\" style = 'width:150px ' onclick='bill(" + (index) + ")'>" + button3 + "<i class=\"fas fa-dollar-sign\"></i></button></td>";
+    //     }
+    // );
+
+    document.getElementById("tableList").innerHTML = tableHtml;
+
 
 }
+
+
+
 
