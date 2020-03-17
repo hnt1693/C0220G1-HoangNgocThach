@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array1 = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let array2 = [" Ursa Minor", "Tarurus", "Cygnus", "Lyra", " Aquila", " Ursa Major", "Leo"];
+    let a = prompt("(\"Polaris\", \"Aldebaran\", \"Deneb\", \"Vega\", \"Altair\", \"Dubhe\", \"Regulus\")");
+    let result = "";
+    function constellations() {
+         for (i=0;i<array1.length;i++){
+             if (a === array1[i]){
+                 result += array1[i] + " " + array2[i];
+                 break;
+             }
+         }
+         return result
+    }
+    alert(constellations());
+
+</script>
+</body>
+</html>

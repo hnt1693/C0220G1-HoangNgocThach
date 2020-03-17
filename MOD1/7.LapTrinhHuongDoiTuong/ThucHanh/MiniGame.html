@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="startGame()" onkeydown="handleKey()">
+<canvas id="myCanvas" height="400" width="700" style="background-color: #9fcdff;"></canvas>
+<script>
+    let contextElement = document.getElementById("myCanvas");
+    let context = contextElement.getContext('2d');
+    const SPACING_TUBE = 250;
+    let HighScore = 0;
+
+    class Game {
+        constructor() {
+            this.newgame = function () {
+                if (this.scored > HighScore) {
+                    HighScore = this.scored;
+                }
+                this.scored = 0;
+                this.bird = new Bird();
+                this.tube = [new Tube(650),
+                    new Tube(400),
+                    new Tube(150)];
+            }
+            this.scored = 0;
+            this.status = "GAME_START";
+            this.bird = new Bird();
+            this.tube = [new Tube(650),
+                new Tube(400),
+                new Tube(150)];
+            this.update = function () {
+                if (this.status === "GAME_GAMING") {
+                    this.bird.drop();
+                    this.tube.forEach((item) => item.run());
+                }
+            }
+            this.scoredCheck = function (bird) {
+                let game = this;
+                this.tube.forEach(function (item) {
+                    if (!item.scored) {
+                        if (item.x + item.width < bird.x) {
+                            item.scored = true;
+                            game.scored++;
+                            if (game.scored > HighScore) {
+                                HighScore = game.scored;
+                            }
+
+                        }
+                    }
+                })
+            }
+            this.collision = function (bird) {
+                if (this.bird.status === "GAME_END") {
+                    this.status = "GAME_END";
+                }
+                if (this.status === "GAME_GAMING") {
+                    this.tube.forEach(function (item) {
+                            let checkX = Math.max(bird.x, item.x) < Math.min(bird.x + bird.width, item.x + item.width);
+                            let checkY_top = bird.y < item.y;
+                            let checkY_bot = bird.y + bird.height > item.y + item.space;
+                            if ((checkX && checkY_top) || (checkX && checkY_bot)) {
+                                bird.status = "GAME_END";
+                            }
+
+                        }
+                    )
+                }
+            }
+
+            this.draw = function () {
+                context.clearRect(0, 0, 700, 400);
+                if (this.status === "GAME_START") {
+                    context.font = "25px Arial"
+                    context.fillText(this.status, 280, 200);
+                } else if (this.status === "GAME_END") {
+                    context.font = "25px Arial"
+                    context.fillText(this.status, 280, 200);
+                    context.font = "17px Arial"
+                    context.fillText("YOU SCORE : " + this.scored, 290, 220);
+                    context.fillText("HIGHSCORE : " + HighScore, 290, 240);
+                    context.font = "17px Arial"
+                    context.fillText("PRESS ANY KEY TO RESTART NEW GAME", 180, 260);
+
+                }
+                context.font = "17px Arial"
+                context.fillText("Highscore :" + HighScore + "   Scored:  " + this.scored, 500, 30);
+                this.tube.forEach((item) => item.draw());
+                this.bird.draw();
+            }
+            this.onKeyDown = function () {
+                if (this.status === "GAME_START") {
+                    this.status = "GAME_GAMING";
+                } else if (this.status === "GAME_END") {
+                    this.newgame();
+                    this.status = "GAME_GAMING";
+                } else {
+
+                    this.bird.jump();
+                }
+
+
+            }
+
+
+        }
+    }
+
+
+    class Bird {
+        constructor() {
+            this.scored = 0;
+            this.x = 50;
+            this.y = 150;
+            this.height = 40;
+            this.width = 25;
+            this.gravity = 0.045;
+            this.velY = 0;
+            this.drop = function () {
+                this.y += this.velY;
+                this.velY += this.gravity;
+                if ((this.y <= 0) || (this.y + this.width >= 400)) {
+                    this.status = "GAME_END";
+                }
+            };
+            this.jump = function () {
+                this.velY = -2.5;
+
+            }
+            ;
+
+
+            this.draw = function () {
+                context.beginPath();
+                context.rect(this.x, this.y, 25, 40);
+                context.stroke();
+            }
+        }
+
+    }
+
+    class Tube {
+        constructor(x) {
+            this.speed = 0.0001;
+            this.scored = false;
+            this.x = x;
+            this.y = Math.random() * 150 + 50;
+            this.width = 30;
+            this.space = 150;
+            this.run = function () {
+                this.x -= 0.3 + this.speed;
+                this.speed += 0.0000001;
+                if (this.x <= (-50)) {
+                    this.x = 700;
+                    this.scored = false;
+                    this.y = Math.random() * 220 + 30;
+                }
+            }
+            this.draw = function () {
+                context.beginPath();
+                context.rect(this.x, this.y, this.width, -this.y);
+                context.stroke();
+                context.rect(this.x, this.y + this.space, this.width, 400 - 150 - this.y);
+                context.stroke();
+            }
+        }
+    }
+
+    let game = new Game();
+
+    function startGame() {
+        game.update();
+        game.collision(game.bird);
+        game.scoredCheck(game.bird);
+        game.draw();
+        setTimeout(startGame, 5)
+        console.log(game.scored);
+
+
+    }
+
+    function handleKey() {
+        game.onKeyDown();
+    }
+</script>
+</body>
+</html>

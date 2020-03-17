@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = prompt("input nuberic value");
+    for (j = 0; j < a; j++) {
+        if (isPrimes(j)) {
+            document.write(j + " ")
+        }
+    }
+
+    function isPrimes(n) {
+        var primes = true;
+        for (let i = 2; i < n; i++) {
+            if (n % i == 0) {
+                primes = false;
+                break;
+            }
+        }
+        return primes;
+    }
+
+</script>
+</body>
+</html>

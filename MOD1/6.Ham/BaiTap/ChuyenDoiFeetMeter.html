@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form id='convFM' oninput="out.value = (Math.round(10000*(feet.value / 3.05))/10000)">
+
+        <label for='feet'>Feet: </label>
+    <input id='feet' type='number' min='0.000'>
+
+        <label for='meter'>Meter: </label>
+        <output id='out' for='feet'></output>
+    </form>
+
+    <form id='convMF' oninput="result.value = (Math.round(10000*(meter.value * 3.281 ))/10000)">
+
+        <label for='meter'>Meter: </label>
+        <input id='meter' type='number' min='0.000'>
+
+        <label for='feet'>Feet: </label>
+        <output id='result' for='meter'></output>
+
+    </form>
+</body>
+</html>
