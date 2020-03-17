@@ -12,18 +12,20 @@ class Database {
             }
         }
         this.remove = function (customer) {
-            this.list.removeIf( (customer_i) => customer.id === customer_i.id);
+            this.list.removeIf((customer_i) => customer.id === customer_i.id);
         }
         this.edit = function (customer) {
-            }
-          this.getList = function () {
-
-          }
-
+            let index =  this.list.findIndex((item) => item.id === customer.id);
+            this.list[index] = customer;
+        };
+        this.getList = function () {
+            let getList = [];
+            this.list.forEach((user) => getList.push(user));
+            return getList;
         }
 
     }
-
+}
 
 Array.prototype.any = function (callback) {
     let i = this.length;
@@ -44,3 +46,4 @@ Array.prototype.removeIf = function (callback) {
         }
     }
 }
+

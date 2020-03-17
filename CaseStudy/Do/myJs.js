@@ -49,6 +49,17 @@ var getProperty = function (index, propertyName) {
 
     return users[index][propertyName];
 };
+Array.prototype.any = function (callback) {
+    let i = this.length;
+    while (i--) {
+        if (callback(this[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+checkName();
 
 function add_User() {
     let add_accept;
@@ -69,18 +80,19 @@ function add_User() {
     if (name.value !== null) {
         if (name.value.length === 0) {
             name_check = 0;
-            document.getElementById("name").style.backgroundColor='#ff5252';
+            document.getElementById("name").style.backgroundColor = '#ff5252';
         } else {
             name_check = 1;
-            document.getElementById("name").style.backgroundColor='#66bb6a';
+            name.value = checkName(name.value);
+            document.getElementById("name").style.backgroundColor = '#66bb6a';
         }
     }
 
-   if (birthday.value.length===0){
-       document.getElementById("birthday").style.backgroundColor='#ff5252';
-   }
-    if (renteddays.value.length===0){
-        document.getElementById("rentedday").style.backgroundColor='#ff5252';
+    if (birthday.value.length === 0) {
+        document.getElementById("birthday").style.backgroundColor = '#ff5252';
+    }
+    if (renteddays.value.length === 0) {
+        document.getElementById("rentedday").style.backgroundColor = '#ff5252';
     }
     check_Email(email.value);
     check_Adress(adress.selectedIndex);
@@ -151,10 +163,10 @@ function check_Email(email) {
         }
     }
 
-     if (email.length===0){
-         email_check = 0;
-         document.getElementById('email').style.backgroundColor = '#ff5252';
-     }
+    if (email.length === 0) {
+        email_check = 0;
+        document.getElementById('email').style.backgroundColor = '#ff5252';
+    }
     if (a_cong === 0) {
         email_check = 0;
         document.getElementById('email').style.backgroundColor = '#ff5252';
@@ -277,7 +289,8 @@ function check_Room(index) {
         rentroom_check = 1;
         document.getElementById('rentroom').style.backgroundColor = '#66bb6a';
 
-    }return rentroom_check;
+    }
+    return rentroom_check;
 }
 
 function check_Cmnd(index) {
@@ -377,6 +390,7 @@ function modified() {
         if (name.value === "") {
             name_check = 0;
         } else {
+            name.value = checkName(name.value);
             name_check = 1;
         }
     } else {
@@ -595,31 +609,33 @@ function bill(id) {
     }
 }
 
-function accept_Pay(id) {
-    let tableHtml = "<table class='table table-striped'>" +
-        "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Birthday</th><th>Actions</th></tr>";
+function checkName(a) {
+    let wrong_char = ["~", "!", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "{", "}", "[", "]", ",", ".", '"', ";", "/", "@"];
 
-    // users.forEach((user, index) => {
-    //         let button3;
-    //         if (user["paid"] === true) {
-    //             button3 = "Đã thanh toán";
-    //         } else {
-    //             button3 = "Tính tiền";
-    //         }
-    //         tableHtml += "<tr>" + "<td>" + (index + 1) + "</td>" +
-    //             "<td style='text-align: left'>" + user["name"] + "</td>" +
-    //             "<td >" + user["sex"] + "</td>" +
-    //             "<td>" + user["birthday"] + "</td>" +
-    //             "<td><button class = \"btn btn-primary btn-sm" + "\"  id=\"edit" + index + "\" onclick='editUser(" + (index) + ")'>Edit<i class=\"fas fa-edit pl-1\"></i></button>  " +
-    //             "<button class = \"btn btn-danger btn-sm" + "\"  id=\"delete" + index + "\" onclick='delete_User(" + (index) + ")'>Delete<i class=\"fas fa-trash-alt pl-1\"></i></button>  " +
-    //             "<button data-toggle=\"modal\" id=\"bill" + index + "\"   data-target=\"#centralModalSuccess\" class = \"btn btn-success btn-sm" + "\" style = 'width:150px ' onclick='bill(" + (index) + ")'>" + button3 + "<i class=\"fas fa-dollar-sign\"></i></button></td>";
-    //     }
-    // );
+    let fix_name = "";
+    a.trim();
 
-    document.getElementById("tableList").innerHTML = tableHtml;
-
-
+    for (let i = 0; i < a.length; i++) {
+        let x = wrong_char.any((index) => index === a.charAt(i));
+        if (!x) {
+            fix_name += a.charAt(i);
+        }
+    }
+    //xử lý các khoảng trăng :
+    let x;
+    do {
+        let temp = fix_name.replace("  ", " ");
+        if (temp === fix_name) {
+            x = true;
+        } else {
+            x = false;
+            fix_name = temp;
+        }
+    }
+    while (x === false)
+    return fix_name;
 }
+
 
 
 

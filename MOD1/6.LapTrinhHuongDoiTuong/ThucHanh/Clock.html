@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="A()">
+<canvas id="myCanvas" height="500" width="500"></canvas>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    let img = new Image(160, 160);
+    img.src = "canvas-clock-dial.png";
+    context.imageSmoothingEnabled = true;
+    const DELTA_PI = 2 * Math.PI / 60;
+
+
+    // let hour = 11;
+    // let min = 59;
+    // let sec = 50;
+
+    class Clock {
+        constructor() {
+            this.background = new Image(248, 236);
+            this.background.src = "canvas-clock-dial.png";
+            // this.sec = sec;
+            // this.min = min;
+            // this.hour = hour;
+            this.update = function (secC) {
+                let time_now = new Date();
+                this.sec = time_now.getSeconds() + (time_now.getMilliseconds() % 1000 / 1000);
+                this.min = time_now.getMinutes() + this.sec / 60;
+                this.hour = time_now.getHours() + this.min / 60;
+
+
+                // this.sec += 0.01;
+                // if (this.sec >= 60) {
+                //     this.sec = 0;
+                //     this.min += 1;
+                // }
+                // if (this.min >= 60) {
+                //     this.hour += 1;
+                //     this.min = 0;
+                // }
+                // if (this.hour >= 12) {
+                //     this.hour = 0;
+                // }
+
+                secC.secPI = this.sec * DELTA_PI;
+                secC.possionSecX = 300 + 90 * Math.cos(-Math.PI / 2 + this.sec / 60 * 2 * Math.PI);
+                secC.possionSecY = 300 + 90 * Math.sin(-Math.PI / 2 + this.sec / 60 * 2 * Math.PI);
+                this.possionMinX = 300 + 70 * Math.cos(-Math.PI / 2 + this.min / 60 * 2 * Math.PI );
+                this.possionMinY = 300 + 70 * Math.sin(-Math.PI / 2 + this.min / 60 * 2 * Math.PI );
+                this.possionHourX = 300 + 50 * Math.cos(-Math.PI / 2 + this.hour / 12 * 2 * Math.PI );
+                this.possionHourY = 300 + 50 * Math.sin(-Math.PI / 2 + this.hour / 12 * 2 * Math.PI );
+                secC.sec = this.sec;
+                // min.value = this.min;
+                // hour.value = this.hour;
+            };
+            this.draw = function (sec) {
+                context.clearRect(0, 0, 500, 500);
+                context.drawImage(this.background, 165, 173, 273, 260);
+                context.beginPath();
+                sec.draw();
+                context.strokeStyle = 'red';
+                context.stroke();
+                context.beginPath();
+                context.lineWidth = 3;
+                context.strokeStyle = 'green';
+                context.moveTo(300, 300);
+                context.lineTo(this.possionMinX, this.possionMinY);
+                context.stroke();
+                context.beginPath();
+                context.strokeStyle = 'blue';
+                context.lineWidth = 3;
+                context.moveTo(300, 300);
+                context.lineTo(this.possionHourX, this.possionHourY);
+                context.stroke();
+            }
+        }
+    }
+
+    class Second {
+        constructor() {
+            this.value = 0;
+            this.secPI = 0;
+            this.possionSecX = 0;
+            this.possionSecY = 0;
+            this.draw = function () {
+                context.strokeStyle = 'green';
+                context.lineWidth = 2;
+                context.stroke();
+                context.moveTo(300, 300);
+                context.lineTo(this.possionSecX, this.possionSecY);
+            }
+        }
+    }
+
+    let clock = new Clock();
+    let second = new Second();
+
+    function A() {
+        clock.update(second);
+        clock.draw(second);
+        setTimeout(A, 10);
+
+    }
+
+
+</script>
+</body>
+</html>

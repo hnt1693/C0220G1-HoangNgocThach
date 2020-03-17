@@ -3,54 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>SuKienBanPhim</title>
+    <script src="car.js"></script>
 </head>
 <body onload="docReady()">
+<canvas id="myCanvas" height="700" width="400" style="background-color: #9fcdff"></canvas>
+<script>
+    let toyota = new Car(300, 600, 50);
+    let rock1 = new rock(50, 20, 5);
+    rock1.renderRock();
+    rock1.moveDown();
 
-<form style="position: absolute; background-color: lightgrey; height: 800px;width: 600px;left: 420px">
-    <img id="nobita" style="position: absolute;left:200px;top: 600px"
-         src="src/toppng.com-aston-martin-one77-01-top-down-car-sprite-480x920.png"
-         height="auto" width="100">
-    <script>
-        function upArrowPressed() {
-            let element = document.getElementById("nobita");
-            element.style.top = parseInt(element.style.top) - 15 + 'px';
-        }
-        function downArrowPressed(){
-        var element = document.getElementById("nobita");
-        element.style.top = parseInt(element.style.top) + 15 + 'px';
-        }
-        function leftArrowPressed() {
-            var element = document.getElementById("nobita");
-            element.style.left = parseInt(element.style.left) - 15 + 'px';
-        }
-        function rightArrowPressed() {
-            var element = document.getElementById("nobita");
-            element.style.left = parseInt(element.style.left) + 15 + 'px';
-        }
-        function moveSelection(evt) {
-            switch (evt.keyCode) {
-                case 37:
-                    leftArrowPressed();
-                    break;
-                case 39:
-                    rightArrowPressed();
-                    break;
-                case 38:
-                    upArrowPressed();
-                    break;
-                case 40:
-                    downArrowPressed();
-                    break;
-            }
-        }
 
-        function docReady() {
-            window.addEventListener('keydown', moveSelection);
-        }
+</script>
+<!--<form style="position: absolute; background-color: lightgrey; height: 800px;width: 600px;left: 420px">-->
+<!--    &lt;!&ndash;    <img id="nobita" style="position: absolute;left:200px;top: 600px"&ndash;&gt;-->
+<!--    &lt;!&ndash;         src="src/toppng.com-aston-martin-one77-01-top-down-car-sprite-480x920.png"&ndash;&gt;-->
+<!--    &lt;!&ndash;         height="auto" width="100">&ndash;&gt;-->
+<!--    <script>-->
+<!--        function upArrowPressed() {-->
+<!--            let element = document.getElementById("nobita");-->
+<!--            element.style.top = parseInt(element.style.top) - 15 + 'px';-->
+<!--        }-->
 
-        alert(window.innerWidth);
-        alert(window.innerHeight);
-    </script>
-</form>
+<!--        function downArrowPressed() {-->
+<!--            var element = document.getElementById("nobita");-->
+<!--            element.style.top = parseInt(element.style.top) + 15 + 'px';-->
+<!--        }-->
+
+<!--        function leftArrowPressed() {-->
+<!--            var element = document.getElementById("nobita");-->
+<!--            element.style.left = parseInt(element.style.left) - 15 + 'px';-->
+<!--        }-->
+
+<!--        function rightArrowPressed() {-->
+<!--            var element = document.getElementById("nobita");-->
+<!--            element.style.left = parseInt(element.style.left) + 15 + 'px';-->
+<!--        }-->
+
+<!--        function moveSelection(evt) {-->
+<!--            switch (evt.keyCode) {-->
+<!--                case 37:-->
+<!--                    leftArrowPressed();-->
+<!--                    break;-->
+<!--                case 39:-->
+<!--                    rightArrowPressed();-->
+<!--                    break;-->
+<!--                case 38:-->
+<!--                    upArrowPressed();-->
+<!--                    break;-->
+<!--                case 40:-->
+<!--                    downArrowPressed();-->
+<!--                    break;-->
+<!--            }-->
+<!--        }-->
+
+<!--        function docReady() {-->
+<!--            window.addEventListener('keydown', moveSelection);-->
+<!--        }-->
+
+<!--        alert(window.innerWidth);-->
+<!--        alert(window.innerHeight);-->
+<!--    </script>-->
+<!--</form>-->
 </body>
 </html>

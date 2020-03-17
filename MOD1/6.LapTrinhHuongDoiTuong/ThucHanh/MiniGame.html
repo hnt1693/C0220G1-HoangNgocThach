@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body onload="startGame()" onkeydown="handleKey()">
+<canvas id="myCanvas" height="400" width="700" style="background-color: #9fcdff;"></canvas>
+<script>
+    let contextElement = document.getElementById("myCanvas");
+    let context = contextElement.getContext('2d');
+
+    class Game {
+        constructor() {
+            this.bird = new Bird();
+            this.update = function () {
+                this.bird.drop();
+            }
+            this.draw = function () {
+                this.bird.draw();
+            }
+            this.onKeyDown = function () {
+                this.bird.jump();
+
+            }
+
+
+        }
+    }
+
+    class Bird {
+        constructor() {
+            this.x = 50;
+            this.y = 50;
+            this.gravity = 0.045;
+            this.velY = 0;
+            this.drop = function () {
+                this.y += this.velY;
+                this.velY += this.gravity;
+                console.log(this.velY);
+            };
+            this.jump = function () {
+                this.velY = -2.5;
+
+            };
+            this.draw = function () {
+                context.clearRect(0, 0, 300, 700);
+                context.beginPath();
+                context.rect(this.x, this.y, 30, 50);
+                context.stroke();
+            }
+        }
+    }
+    class Tube {
+        constructor() {
+        this.x = Math.random()
+        }
+    }
+
+    let game = new Game();
+
+    function startGame() {
+        game.update();
+        game.draw();
+        setTimeout(startGame,5)
+    }
+
+    function handleKey() {
+        game.onKeyDown();
+    }
+</script>
+</body>
+</html>

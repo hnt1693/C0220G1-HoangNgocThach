@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    class Circle {
+        constructor(name, x, y, radius) {
+            this.name = name;
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.gravity = 0.02;
+            this.velY = 0.01;
+            this.directDown = true;
+            this.moveRight = true;
+            this.bigger = true;
+            this.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            this.update = function () {
+                if (this.directDown === true) {
+                    if (this.y <= 500 - this.radius) {
+                        this.y += this.velY;
+                        this.velY += this.gravity;
+                    } else {
+                        this.velY = 0.02;
+                        this.directDown = false;
+                    }
+                } else if (this.directDown === false) {
+                    if (this.y < this.radius) {
+                        this.directDown = true;
+                        this.velY = 0.02;
+                    } else {
+                        this.y -= this.velY;
+                        this.velY += this.gravity;
+                    }
+                }
+                if (this.moveRight) {
+                    if (this.x <= 500 - this.radius) {
+                        this.x += 4;
+                    } else {
+                        this.moveRight = false;
+                    }
+                } else {
+                    if (this.x < this.radius) {
+                        this.moveRight = true;
+                    } else {
+                        this.x -= 4;
+                    }
+                }
+                if (this.bigger === true) {
+                    if (this.radius < 40) {
+                        this.radius += 0.05;
+                    } else {
+                        this.bigger = false;
+                    }
+
+                } else {
+                    if (this.radius <= 1) {
+                        this.bigger = true;
+
+                    } else {
+                        this.radius -= 0.05;
+                    }
+
+                }
+
+                console.log(this.y)
+                console.log(this.directDown)
+            };
+
+            this.render = function () {
+                let c = document.getElementById("myCanvas");
+                let ctx = c.getContext("2d");
+
+                c = document.getElementById("myCanvas");
+                ctx = c.getContext("2d");
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+                ctx.stroke();
+                ctx.fillText(this.name, this.x ,  this.y);
+            };
+
+            this.intersectWith = function (circle) {
+                let distance = Math.sqrt(
+                    Math.pow(this.x - circle.x, 2) +
+                    Math.pow(this.y - circle.y, 2)
+                );
+                return distance < (this.radius + circle.radius);
+            }
+        }
+    }
+
+    class game {
+        constructor() {
+            this.circles = [
+                new Circle("1", 200, 20, 20),
+                new Circle("2", 50, 50, 10),
+                new Circle("3", 300, 400, 15),
+                new Circle("4", 50, 400, 15),
+                new Circle("5", 300, 440, 20),
+                new Circle("5", 300, 440, 20),
+                new Circle("5", 300, 440, 20),
+                new Circle("5", 300, 440, 20),
+                new Circle("5", 300, 440, 20),
+                new Circle("5", 300, 440, 20),
+            ];
+            this.update = function () {
+                this.circles.forEach(function (item) {
+                    item.update();
+                });
+                for (let i = 0; i < this.circles.length - 1; i++) {
+                    for (let j = i + 1; j < this.circles.length ; j++) {
+                        if (this.circles[i].intersectWith(this.circles[j])) {
+                            this.circles[i].directDown = !this.circles[i].directDown;
+                            this.circles[i].moveRight = !this.circles[i].moveRight;
+                            this.circles[j].directDown = !this.circles[j].directDown;
+                            this.circles[j].moveRight = !this.circles[j].moveRight;
+                            break;
+                        }
+                    }
+                }
+            };
+            this.render = function () {
+                let c = document.getElementById("myCanvas");
+                let ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, 500, 500);
+                this.circles.forEach(function (item) {
+                    item.render();
+                })
+            };
+            this.check = function () {
+
+            }
+        }
+    }
+
+</script>
+<body onkeydown="onKey(event)" onload="gameStart()">
+<canvas id="myCanvas" height="500" width="500" style="background-color: lightslategrey"></canvas>
+<button>OK</button>
+<script>
+    let Game1 = new game();
+
+    function gameStart() {
+        Game1.update();
+        Game1.render();
+        requestAnimationFrame(gameStart);
+    }
+
+    function onKey(event) {
+        Game1.onKeyDown(event.keyCode);
+    }
+</script>
+</body>
+</html>

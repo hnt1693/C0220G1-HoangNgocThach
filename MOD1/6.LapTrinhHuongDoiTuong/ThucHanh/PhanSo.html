@@ -6,6 +6,24 @@
     <script src="Do/Phanso.js"></script>
 </head>
 <body>
+<!--Form without header-->
+<!--Modal: Login with Avatar Form-->
+<script>
 
+    function animate(i){
+        myVar=setTimeout(function(){
+            alert(i);
+            if(i==4){
+                clearTimeout(myVar);
+                return;
+            }
+            animate(i+1)
+        },1000)
+    }
+
+    var i=1; //i is the start point 1 to 12 that is
+    animate(i);
+</script>
+<!--/Form without header-->
 </body>
 </html>

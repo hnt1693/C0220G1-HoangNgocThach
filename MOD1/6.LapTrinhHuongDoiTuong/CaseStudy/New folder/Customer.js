@@ -5,4 +5,8 @@ class Customer {
         this.birthday = birthday;
         this.email = email;
     }
+
+    edit = function () {
+
+    }
 }

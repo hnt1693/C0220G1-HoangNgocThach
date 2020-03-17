@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Customer.js"></script>
+    <script src="database.js"></script>
+    <script src="function.js"></script>
+</head>
+<body>
+<input id="id" type="text">
+<input id="name" type="text">
+<input id="birthday" type="text">
+<input id="email" type="text">
+<h3 id="resuilt"></h3>
+<button onclick=" add()">add</button>
+<table id="tableList"></table>
+
+<script>
+
+    // let Customer1 = new Customer("A1", "1. Hoàng Ngọc Thạch", "15/5/2019", "hnt1693");
+    // let Customer2 = new Customer("A2", "2. Trần Xuân Sơn", "15/5/2019", "hnt1693");
+    // let Customer3 = new Customer("A3", "3. Trần Xuân Sơn", "15/5/2019", "hnt1693");
+    let Furama = new Database();
+
+    function add() {
+        let idElement = document.getElementById("id");
+        let nameElement = document.getElementById("name");
+        let birthdayElement = document.getElementById("birthday");
+        let emailElement = document.getElementById("email");
+        let resuiltElement = document.getElementById("resuilt");
+        let customer = new Customer(idElement.value, nameElement.value, birthdayElement.value, emailElement.value);
+        Furama.add(customer);
+        Furama.edit(customer);
+        //resuiltElement.innerText = Furama.list;
+        displayTablelist();
+        console.log(Furama.getList());
+
+    }
+
+</script>
+</body>
+</html>

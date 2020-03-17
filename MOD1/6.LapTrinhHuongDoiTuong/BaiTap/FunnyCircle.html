@@ -4,45 +4,81 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body onload="setTimeout(ramdom_Circle,500,Circle1)">
-<canvas id="canvas" height="500" width="500" style="background-color: lightslategrey"></canvas>
-<button onclick="ramdom_Circle(Circle1);">OK</button>
+<body>
+<canvas id="myCanvas" height="500" width="500" style="background-color: lightslategrey"></canvas>
+<button onclick="gameStart()">OK</button>
 <script>
     class Circle {
         constructor(x, y, radius) {
             this.x = x;
             this.y = y;
             this.radius = radius;
-            this.Draw = function () {
-                var c = document.getElementById("canvas");
-                var ctx = c.getContext("2d");
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-                ctx.fillStyle = "red";
-                ctx.fill();
-                setTimeout(function () {
-                    ctx.clearRect(0, 0, 500, 500)
-                }, 200);
+            this.trending = true;
+            this.color = "";
+            this.update = function () {
+                console.log(this.radius + "" + this.trending);
+                // this.x = Math.random()*500
+                // this.y = Math.random()*500;
+                if (this.radius >= 0) {
+                    if ((this.radius <= 50) && (this.trending)) {
+                        this.radius += Math.random()*3;
+                        this.x +=2;
+                        this.y +=2;
+                    } else  {
+                        this.trending = false;
+                        this.radius -= Math.random()*3;
+                        this.x +=2;
+                        this.y +=20;
+                    }
+                }
+                  if (this.radius < 0) {
+                    this.x = Math.random() * 500;
+                    this.y = Math.random() * 500;
+                    this.radius = 1;
+                    this.trending = true;
+                }
+                this.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
             }
 
         }
     }
 
-    let dem = 0;
-
-    function ramdom_Circle(circle) {
-
-        let x = circle.x;
-        let y = circle.y;
-        circle.x = x + (Math.floor(Math.random() * 100) - 50);
-        circle.y = y + (Math.floor(Math.random() * 100) - 50);
-        circle.Draw();
-        console.log(dem);
-        setTimeout(ramdom_Circle, 250, circle);
-
+    class game {
+        constructor() {
+            this.list = [new Circle(100, 50, 5),
+                new Circle(200, 50, 30),
+                new Circle(10, 300, 20),
+                new Circle(200, 300, 20),
+                new Circle(50, 320, 40)];
+            this.update = function () {
+                this.list.forEach((item) => item.update())
+            }
+            this.render = function () {
+                let c = document.getElementById("myCanvas");
+                let ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, 500, 500);
+                this.list.forEach(function (item) {
+                    c = document.getElementById("myCanvas");
+                    ctx = c.getContext("2d");
+                    ctx.beginPath();
+                    ctx.arc(item.x, item.y, item.radius, 0, 2 * Math.PI);
+                    ctx.stroke();
+                    ctx.fillStyle = item.color;
+                    ctx.fill();
+                })
+            }
+        }
     }
 
-    let Circle1 = new Circle(100, 200, 20);
+    let Game1 = new game();
+
+    function gameStart() {
+
+        Game1.update();
+        Game1.render();
+        setTimeout(gameStart, 100);
+    }
+
 
 </script>
 </body>

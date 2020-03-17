@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Game.js"></script>
+</head>
+<body onload="gameUpdate()" onkeydown="handleKey(event)" onkeyup="handleKeyUp(event)">
+
+<canvas id="myCanvas" width="350" height="700" style="background-color: #9fcdff"></canvas>
+<script>
+    let game = new Game();
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    function gameUpdate() {
+        game.update();
+        game.check();
+        game.draw(context);
+        requestAnimationFrame(gameUpdate);
+    }
+
+    function handleKey(event) {
+        game.onKeyDown(event.keyCode);
+    }
+
+    function handleKeyUp(event) {
+        game.onKeyUp(event.keyCode);
+    }
+</script>
+
+</body>
+</html>
