@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ValidateClass</title>
+</head>
+<body>
+
+<script>
+    let a = false;
+    do {
+    let str = prompt("Nhâp vào Class cần kiểm tra");
+    let str1 = "P3333G"
+    let pattern = /^[ACP][0-9]{4}[GHIKLM]$/;
+    let a = (pattern.test(str1));
+    alert("Bạn nhập " + a);
+} while (a === false)
+</script>
+</body>
+</html>

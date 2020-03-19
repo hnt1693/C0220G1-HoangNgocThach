@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    for (let i = 0; i < 10; i++) {
+        arr.push(i);
+    }
+
+    console.log(arr)
+    let number = parseInt(prompt("Số bạn cần tìm là"));
+    // timKiemTuanTu();
+   searchNumber(number, arr);
+
+    function timKiemTuanTu() {
+        let exist = false;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === number) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            alert("Trong dãy có số bạn muốn tìm")
+        } else {
+            alert("Trong dãy k có số bạn muốn tìm")
+        }
+
+    }
+
+
+
+
+    function searchNumber(number, array) {
+        let exist = false;
+        let arr2 = [];
+        let j = Math.floor(array.length / 2);
+        if (number === array[j]) {
+            exist = true;
+        } else if (number < array[j]) {
+            for (let i = 0; i < j; i++) {
+                arr2 = [];
+                arr2.push(array[i]);
+                searchNumber(number, arr2);
+            }
+
+        } else {
+            for (let i = j; i < array.length; i++) {
+                arr2 = [];
+                arr2.push(array[i]);
+                searchNumber(number, arr2);
+            }
+        }
+        if (exist) {
+            alert("Có tồn tại số bạn cần tìm trong dãy");
+        } else {
+            alert("Không tồn tại số bạn cần tìm trong dãy");
+        }
+    }
+</script>
+</body>
+</html>

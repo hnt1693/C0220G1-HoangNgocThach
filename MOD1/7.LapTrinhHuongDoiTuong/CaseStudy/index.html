@@ -5,9 +5,9 @@
     <script src="New folder/Customer.js"></script>
     <script>
         let Furama = new Database();
-        let Customer1 = new Customer("A1", "1. Hoàng Ngọc Thạch", "15/5/2019", "hnt1693");
-        let Customer2 = new Customer("A2", "2. Trần Xuân Sơn", "15/5/2019", "hnt1693");
-        let Customer3 = new Customer("A3", "3. Trần Xuân Sơn", "15/5/2019", "hnt1693");
+        let Customer1 = new Customer("A1", "Hoàng Ngọc Thạch", "hnt1693", "15/5/2019", "15/5/2019");
+        let Customer2 = new Customer("A2", "Trần Xuân Sơn", "hnt1693", "15/5/2019", "15/5/2019");
+        let Customer3 = new Customer("A3", "Trần Xuân Sơn", "hnt1693", "15/5/2019", "15/5/2019");
         Furama.add(Customer1);
         Furama.add(Customer2);
         Furama.add(Customer3);
@@ -30,6 +30,13 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="New folder/main.js"></script>
     <script src="../../../CaseStudy/Do/MDB-Free_4.14.0/js/popper.js"></script>
+    <script>
+        $('#dtBasicExample').mdbEditor({
+            mdbEditor: true
+        });
+        $('.dataTables_length').addClass('bs-select');
+    </script>
+    <script src="jquery-tabledit-1.2.3/jquery.tabledit.js"></script>
 </head>
 <body onload="">
 
@@ -54,41 +61,32 @@
                     </div>
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
-                            <input type="text" id="inputName1" class="form-control validate">
+                            <input type="text" id="id" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="inputAge1">ID/label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="text" id="name" class="form-control validate">
                             <label data-error="wrong" data-success="right" for="inputName1">Name</label>
                         </div>
 
                         <div class="md-form mb-5">
-                            <input type="text" id="inputPosition1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="inputPosition1">Position</label>
+                            <input type="text" id="email" class="form-control validate">
+                            <label data-error="wrong" data-success="right" for="inputPosition1">Email</label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="date" id="birthday" class="form-control" placeholder="Birthday">
+                            <label data-error="wrong" data-success="right"></label>
+                        </div>
+                        <div class="md-form mb-5">
+                            <input type="date" id="rentedday" class="form-control" placeholder="Rented day">
+                            <label data-error="wrong" data-success="right"></label>
                         </div>
 
-                        <div class="md-form mb-5">
-                            <input type="text" id="inputOfficeInput1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="inputOfficeInput1">Office</label>
-                        </div>
 
-                        <div class="md-form mb-5">
-                            <input type="text" id="inputAge1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="inputAge1">Age</label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="date" id="inputDate1" class="form-control" placeholder="Select Date">
-                            <label data-error="wrong" data-success="right" for="inputDate1"></label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="text" id="inputSalary1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="inputSalary1">Salary</label>
-                        </div>
-                        <div class="md-form mb-5">
-                            <input type="text" id="inputSalary1example" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="inputSalary1example">Example</label>
-                        </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center buttonAddFormWrapper">
-                        <button class="btn btn-outline-primary btn-block buttonAdd" data-dismiss="modal">Add form
+                        <button class="btn btn-outline-primary btn-block buttonAdd" onclick="add()"
+                                data-dismiss="modal">Add form
                             <i class="fas fa-paper-plane-o ml-1"></i>
                         </button>
                     </div>
@@ -97,99 +95,18 @@
         </div>
 
         <div class="text-center">
-            <a href="" class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-target="#modalAdd1">Add<i
+            <a href="" class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-target="#modalAdd1">Add Customer<i
                     class="fas fa-plus-square ml-1"></i></a>
         </div>
-
-        <div class="modal fade modalEditClass" id="modalEdit1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold text-secondary ml-5">Edit form</h4>
-                        <button type="button" class="close text-secondary" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body mx-3">
-                        <div class="md-form mb-5">
-                            <input type="text" id="formNameEdit1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="formNameEdit1">Name</label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="text" id="formPositionEdit1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="formPositionEdit1">Position</label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="text" id="formOfficeEdit1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="formOfficeEdit1">Office</label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="text" id="formAgeEdit1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="formAgeEdit1">Age</label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="text" id="formDateEdit1" class="form-control datepicker">
-                            <label data-error="wrong" data-success="right" for="formDateEdit1">Date</label>
-                        </div>
-
-                        <div class="md-form mb-5">
-                            <input type="text" id="formSalaryEdit1" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="formSalaryEdit1">Salary</label>
-                        </div>
-                        <div class="md-form mb-5">
-                            <input type="text" id="formSalaryEdit1ex" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="formSalaryEdit1ex">Example</label>
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center editInsideWrapper">
-                        <button class="btn btn-outline-secondary btn-block editInside" data-dismiss="modal">Edit
-                            form
-                            <i class="fas fa-paper-plane-o ml-1"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center buttonEditWrapper">
-            <button class="btn btn-info btn-rounded btn-sm buttonEdit" data-toggle="modal" data-target="#modalEdit1"
-                    disabled>Edit<i class="fas fa-pencil-square-o ml-1"></i></a>
-        </div>
-
-        <div class="modal fade" id="modalDelete1" tabindex="-1" role="dialog" aria-labelledby="modalDelete1"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold ml-5 text-danger">Delete</h4>
-                        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body mx-3">
-                        <p class="text-center h4">Are you sure to delete selected row?</p>
-
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center deleteButtonsWrapper">
-                        <button type="button" class="btn btn-danger btnYesClass" id="btnYes1" data-dismiss="modal">Yes
-                        </button>
-                        <button type="button" class="btn btn-primary btnNoClass" id="btnNo1" data-dismiss="modal">No
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <div class="text-center">
+            <a href="" class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-target="#modalAdd1">Add Employee<i
+                    class="fas fa-plus-square ml-1"></i></a>
         </div>
 
         <div class="text-center">
             <button class="btn btn-danger btn-sm btn-rounded buttonDelete" data-toggle="modal" disabled
                     data-target="#modalDelete"
-                    disabled>Delete<i class="fas fa-times ml-1"></i></a>
+                    disabled>Delete<i class="fas fa-times ml-1"></i></button>
         </div>
     </div>
 

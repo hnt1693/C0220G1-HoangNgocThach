@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [1, 2, 3, 5, 33, 132, 23, 55, 2];
+    let max = arr[0]
+    let max2;
+    for (let i = 1; i < arr.length - 1; i++) {
+        max = arr[i] > arr[i + 1] ? arr[i] : arr[i + 1];
+        if (max === arr[i]) {
+            max2 = max;
+       }
+
+    }
+    alert(max2);
+
+    // let max = arr[0];
+    // let a;
+    // // let min = arr[0];
+    // for (let i = 0; i < arr.length; i++) {
+    //     let count = 0;
+    //     for (let j = 0; j < arr.length; j++) {
+    //         if (arr[i] >= arr[j]) {
+    //             count++;
+    //         }
+    //         if (count === arr.length - 1) {
+    //             a = i;
+    //             break;
+    //         }
+    //     }
+    // }
+    //
+    // function arrange(arr) {
+    //     let count = 0;
+    //     for (let i = 0; i < arr.length; i++) {
+    //
+    //     }
+    //
+    //
+    // }
+
+    // alert(arr[a]);
+    // alert(min);
+
+</script>
+
+</body>
+</html>

@@ -56,12 +56,15 @@
                     this.status = "GAME_END";
                 }
                 if (this.status === "GAME_GAMING") {
+
                     this.tube.forEach(function (item) {
+                        console.log(this)
                             let checkX = Math.max(bird.x, item.x) < Math.min(bird.x + bird.width, item.x + item.width);
                             let checkY_top = bird.y < item.y;
                             let checkY_bot = bird.y + bird.height > item.y + item.space;
                             if ((checkX && checkY_top) || (checkX && checkY_bot)) {
                                 bird.status = "GAME_END";
+
                             }
 
                         }
@@ -75,6 +78,8 @@
                     context.font = "25px Arial"
                     context.fillText(this.status, 280, 200);
                 } else if (this.status === "GAME_END") {
+                    context.beginPath();
+                    context.fillStyle = 'black'
                     context.font = "25px Arial"
                     context.fillText(this.status, 280, 200);
                     context.font = "17px Arial"
@@ -84,8 +89,12 @@
                     context.fillText("PRESS ANY KEY TO RESTART NEW GAME", 180, 260);
 
                 }
+                context.beginPath();
+                context.strokeStyle = 'black'
                 context.font = "17px Arial"
                 context.fillText("Highscore :" + HighScore + "   Scored:  " + this.scored, 500, 30);
+                context.beginPath();
+
                 this.tube.forEach((item) => item.draw());
                 this.bird.draw();
             }
@@ -113,9 +122,9 @@
             this.scored = 0;
             this.x = 50;
             this.y = 150;
-            this.height = 40;
-            this.width = 25;
-            this.gravity = 0.045;
+            this.height = 30;
+            this.width = 30;
+            this.gravity = 0.04;
             this.velY = 0;
             this.drop = function () {
                 this.y += this.velY;
@@ -125,7 +134,7 @@
                 }
             };
             this.jump = function () {
-                this.velY = -2.5;
+                this.velY = -2.2;
 
             }
             ;
@@ -133,7 +142,7 @@
 
             this.draw = function () {
                 context.beginPath();
-                context.rect(this.x, this.y, 25, 40);
+                context.rect(this.x, this.y, this.height, this.width);
                 context.stroke();
             }
         }
@@ -142,15 +151,15 @@
 
     class Tube {
         constructor(x) {
-            this.speed = 0.0001;
+            this.speed = 0.001;
             this.scored = false;
             this.x = x;
             this.y = Math.random() * 150 + 50;
             this.width = 30;
-            this.space = 150;
+            this.space = 120;
             this.run = function () {
-                this.x -= 0.3 + this.speed;
-                this.speed += 0.0000001;
+                this.x -= (0.3 + this.speed);
+                this.speed += 0.0001;
                 if (this.x <= (-50)) {
                     this.x = 700;
                     this.scored = false;
@@ -158,11 +167,11 @@
                 }
             }
             this.draw = function () {
-                context.beginPath();
                 context.rect(this.x, this.y, this.width, -this.y);
                 context.stroke();
-                context.rect(this.x, this.y + this.space, this.width, 400 - 150 - this.y);
+                context.rect(this.x, this.y + this.space, this.width, 400 - this.space - this.y);
                 context.stroke();
+
             }
         }
     }
@@ -174,8 +183,8 @@
         game.collision(game.bird);
         game.scoredCheck(game.bird);
         game.draw();
-        setTimeout(startGame, 5)
-        console.log(game.scored);
+        requestAnimationFrame(startGame)
+
 
 
     }

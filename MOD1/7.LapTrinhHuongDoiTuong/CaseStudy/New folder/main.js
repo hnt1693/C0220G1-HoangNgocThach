@@ -3,8 +3,9 @@ function add() {
     let idElement = document.getElementById("id");
     let nameElement = document.getElementById("name");
     let birthdayElement = document.getElementById("birthday");
+    let renteddayElement = document.getElementById("rentedday");
     let emailElement = document.getElementById("email");
-    let customer = new Customer(idElement.value, nameElement.value, birthdayElement.value, emailElement.value);
+    let customer = new Customer(idElement.value, nameElement.value, emailElement.value, birthdayElement.value, renteddayElement.value);
     Furama.add(customer);
     displayTablelist();
     console.log(Furama.getList());
@@ -12,7 +13,7 @@ function add() {
 }
 function displayTablelist() {
     let tablehtml = "<table>" +
-        "<tr><th>ID</th><th>Name</th><th>Gender</th><th>Birthday</th><th>Actions</th></tr>";
+        "<tr><th>ID</th><th>Name</th><th>Email</th><th>Birthday</th><th>Rented day</th><th>Actions</th></tr>";
     let users = Furama.getList();
     // var tableHead = "<table><tr><td>ID</td><td>Name</td><td>Birthday</td><td>Email</td></tr></table>";
     for (let i = 0; i < users.length; i++) {
@@ -20,8 +21,8 @@ function displayTablelist() {
         console.log(users[i]);
         tablehtml += "<table><tr>"
             + td(i + 1) + td(customer.name)
-            + td(customer.birthday)
-            + td(customer.email) + td('hahah')
+            + td(customer.email)
+            + td(customer.birthday) + td(customer.rentedday)+td("hahaah")
             + "</tr></table>";
     }
     console.log(tablehtml);
@@ -32,21 +33,3 @@ function displayTablelist() {
 
 }
 
-$('#dt-more-columns').mdbEditor({
-    modalEditor: true,
-    headerLength: 7,
-});
-$('.dataTables_length').addClass('bs-select');
-$('#your-table-id').mdbEditor({
-    headerLength: 6,
-    evenTextColor: '#000',
-    oddTextColor: '#000',
-    bgEvenColor: '',
-    bgOddColor: '',
-    thText: '',
-    thBg: '',
-    modalEditor: false,
-    bubbleEditor: false,
-    contentEditor: false,
-    rowEditor: false
-});
