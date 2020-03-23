@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BouncingGame</title>
+    <script src="js/SoundManager.js"></script>
+    <script src="js/PicturesManager.js"></script>
+    <script src="js/BallClass.js"></script>
+    <script src="js/BarClass.js"></script>
+    <script src="js/BrickClass.js"></script>
+    <script src="js/GameClass.js"></script>
+</head>
+<body onload="gameCase();" onkeydown="Handle(event, false)" onkeyup="Handle(event, true);">
+<canvas id="myCanvas" width="400" height="700" style="background-color: #4a5b64;"></canvas>
+<script>
+    let context = document.getElementById("myCanvas");
+    let ctx = context.getContext("2d");
+    const GAME_START = 1;
+    const GAME_PLAYING = 2;
+    const GAME_END = 3;
+    const GAME_NEXTLEVEL = 4;
+    let GAME_LEVEL = 1;
+    highscore = 0;
+
+    function Handle(event, isReleasing) {
+        // console.log("Keycode = " + event.keyCode + ". isReleasing = " + isReleasing);
+        keyStatusMap["KEY" + event.keyCode] = isReleasing;
+        if (event.keyCode === 37 && isReleasing === false) {
+            game.bar.moveLeft();
+        } else if (event.keyCode == 39 && isReleasing === false) {
+            game.bar.moveRight();
+        } else if (event.keyCode == 38) {
+            if ((game.status === GAME_START) || (game.status === GAME_NEXTLEVEL)) {
+                game.ball.increaseAngle();
+            }
+
+
+        } else if (event.keyCode == 40) {
+            if ((game.status === GAME_START) || (game.status === GAME_NEXTLEVEL)) {
+                game.ball.decreaseAngle();
+            }
+
+        } else if (event.keyCode == 32) {
+            if (game.status === GAME_START) {
+                game.status = GAME_PLAYING;
+                game.ball.statusFly = true;
+                game.soundManager.playBackground();
+            }
+
+            if (game.status === GAME_NEXTLEVEL) {
+                game.status = GAME_START;
+                game.nextLevel();
+
+            }
+        } else if (event.keyCode == 13) {
+            if (game.status === GAME_END) {
+                game.newgame();
+            }
+
+        }
+
+        if (keyStatusMap["KEY37"] === true && keyStatusMap["KEY39"] === true) {
+            game.bar.stop();
+        }
+
+    }
+
+    function checkCollision(arc, rect) {
+        let px = arc.x;
+        let py = arc.y;
+        if (px < rect.x)
+            px = rect.x;
+        else if (px > rect.x + rect.width)
+            px = rect.x + rect.width;
+        if (py < rect.y)
+            py = rect.y;
+        else if (py > rect.y + rect.height)
+            py = rect.y + rect.height;
+        let dx = arc.x - px;
+        let dy = arc.y - py;
+        let checkRadius = Math.sqrt(dx * dx + dy * dy)
+        return (dx * dx + dy * dy) < arc.radius * arc.radius
+
+    }
+
+    function getCollisionSize(arc, rect) {
+        let width;
+        let height;
+        let resuilt;
+        let arcXBetweenRect = (arc.x > rect.x) && ((arc.x > rect.x + rect.width));
+        let arcYBetweenRect = (arc.y > rect.y) && ((arc.y > rect.y + rect.height));
+        if (((arc.x < rect.x) || (arc.x > rect.x + rect.width)) && (arcYBetweenRect)) {
+            width = Math.min(Math.abs(arc.x - rect.x), Math.abs(arc.x - rect.x - rect.width));
+            height = Math.sqrt(arc.radius * arc.radius * -width * width);
+        } else if (((arc.y < rect.y) || (arc.y < rect.y + rect.height)) && (arcXBetweenRect)) {
+            height = Math.min(Math.abs(arc.y - rect.y), Math.abs(arc.y - rect.y - rect.height));
+            width = Math.sqrt(arc.radius * arc.radius * -height * height);
+        } else if ((!arcXBetweenRect) && (!arcYBetweenRect)) {
+            width = arc.radius - Math.min(Math.abs(arc.x - rect.x), Math.abs(arc.x - rect.x - rect.width));
+            height = arc.radius - Math.min(Math.abs(arc.y - rect.y), Math.abs(arc.y - rect.y - rect.height));
+        }
+        if (width > height) {
+            resuilt = "CollisionWidth"
+        } else {
+            resuilt = "CollistionHeight"
+        }
+        return resuilt;
+    }
+
+    let game = new Game();
+
+    function gameCase() {
+        game.update();
+
+        game.draw();
+        requestAnimationFrame(gameCase);
+
+    }
+
+    function randomValue(level) {
+        return Math.floor(Math.random() * (level + 1) + 1);
+    }
+
+    function getImageBrick(value) {
+        let x;
+        switch (value) {
+            case 1 : {
+                x = game.pictureManager.brick1;
+                break;
+            }
+
+            case 2 : {
+                x = game.pictureManager.brick2;
+                break;
+            }
+            case 3 : {
+                x = game.pictureManager.brick3;
+                break;
+            }
+            case 4 : {
+                x = game.pictureManager.brick4;
+                break;
+            }
+            default : {
+                x = game.pictureManager.brick5;
+                break;
+            }
+        }
+        return x;
+    }
+
+    keyStatusMap = {};
+</script>
+
+</body>
+</html>

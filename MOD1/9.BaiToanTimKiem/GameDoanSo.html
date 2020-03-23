@@ -7,16 +7,39 @@
 <body>
 <script>
     let arr = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 100000000; i++) {
         arr.push(i);
     }
 
-    console.log(arr)
+
     let number = parseInt(prompt("Số bạn cần tìm là"));
     // timKiemTuanTu();
-   searchNumber(number, arr);
+    let exist1 = false;
+    let time = new Date();
+    time1 = time.getSeconds() * 1000 + time.getMilliseconds();
+    let x = searchNumber(number, arr);
+    let time2 = new Date();
+    let time3 = time2.getSeconds() * 1000 + time2.getMilliseconds();
+    let time4 = new Date();
+    let time5 = time4.getMilliseconds() + time4.getSeconds() * 1000;
+    let checkTuanTu = timKiemTuanTu(number, arr);
+    let time6 = new Date();
+    let time7 = time6.getMilliseconds() + time6.getSeconds() * 1000;
+    if (checkTuanTu) {
+        alert("Tìm theo tuần tự có số bạn cần tìm trong dãy")
+    } else {
+        alert("Tìm theo tuần tự không có số bạn cần tìm trong dãy");
+    }
+    if (exist1) {
+        alert("Tìm theo nhị phân có số bạn cần tìm trong dãy")
+    } else {
+        alert("Tìm theo nhị phân không có số bạn cần tìm trong dãy");
+    }
+    alert("Khoảng thời gian tìm kiếm tuần tự là " + (time3 - time1) + " ms\n" +
+        "Khoảng thời gian tìm kiếm theo nhị phân là " + (time7 - time5) + " ms");
 
-    function timKiemTuanTu() {
+
+    function timKiemTuanTu(number, arr) {
         let exist = false;
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] === number) {
@@ -24,42 +47,38 @@
                 break;
             }
         }
-        if (exist) {
-            alert("Trong dãy có số bạn muốn tìm")
-        } else {
-            alert("Trong dãy k có số bạn muốn tìm")
-        }
-
+        return exist;
     }
 
 
-
-
     function searchNumber(number, array) {
-        let exist = false;
-        let arr2 = [];
         let j = Math.floor(array.length / 2);
-        if (number === array[j]) {
-            exist = true;
-        } else if (number < array[j]) {
-            for (let i = 0; i < j; i++) {
-                arr2 = [];
-                arr2.push(array[i]);
+        console.log(j + "  " + array[j] + " " + number);
+        if (j === 0) {
+            if (array[0] === number) {
+                exist1 = true;
+            }
+        } else if (j > 0) {
+            if (number === array[j]) {
+                exist1 = true;
+
+            } else if (number < array[j]) {
+                let arr2 = [];
+                for (let i = 0; i < j; i++) {
+                    arr2.push(array[i]);
+                }
+                searchNumber(number, arr2);
+            } else {
+                let arr2 = [];
+                for (let i = j + 1; i < array.length; i++) {
+                    arr2.push(array[i]);
+                }
                 searchNumber(number, arr2);
             }
 
-        } else {
-            for (let i = j; i < array.length; i++) {
-                arr2 = [];
-                arr2.push(array[i]);
-                searchNumber(number, arr2);
-            }
         }
-        if (exist) {
-            alert("Có tồn tại số bạn cần tìm trong dãy");
-        } else {
-            alert("Không tồn tại số bạn cần tìm trong dãy");
-        }
+
+        return exist1;
     }
 </script>
 </body>

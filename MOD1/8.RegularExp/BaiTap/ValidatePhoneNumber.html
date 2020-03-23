@@ -10,7 +10,7 @@
     let a = false;
     do {
         let str = prompt("Nhâp vào MobilePhone theo Form (xx)-(0xxxxxxxxx) cần kiểm tra");
-        let pattern = /^\([0-9]{2}\)-\(0[0-9]{9}\)$/;
+        let pattern = /^([0-9]{2})-(0[0-9]{9})$/;
         let a = (pattern.test(str));
         alert("Bạn nhập " + a);
     } while (a === false)

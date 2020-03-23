@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body><canvas id="myCanvas" height="300" width="500"></canvas>
+<img src="CaseStudy/Do/img/logo_transparent.png">
+<SCRIPT>
+    let context = document.getElementById("myCanvas");
+    let ctx = context.getContext("2d");
+    ctx.beginPath();
+    var grd = ctx.createLinearGradient(0, 0, 0, 100);
+    grd.addColorStop(0.3, "black");
+    grd.addColorStop(0.5, "blue");
+    grd.addColorStop(0.7, "black");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, 100, 100);
+</SCRIPT>
+</body>
+</html>

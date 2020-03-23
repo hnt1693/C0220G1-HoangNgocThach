@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let listMobile = ["0982527982", "0973776072", "0917749254", "0904770053", "0974880788"];
+    let checkViettel = /^09[768][0-9]{7}/;
+    let listViettel = [];
+    for (let i = 0; i < listMobile.length; i++) {
+        if (checkViettel.test(listMobile[i])) {
+            listViettel.push(listMobile[i]);
+        }
+    }
+    alert("Danh sách số Viettel :\n" + listViettel.join("\n") );
+</script>
+</body>
+</html>
