@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    class Arr {
+        constructor() {
+            this.revert = false;
+            this.arr = [];
+            this.setValue = function (i, j) {
+                this.row = i;
+                this.col = j;
+                for (let a = 0; a < i; a++) {
+                    this.arr[a] = [];
+                    for (let b = 0; b < j; b++) {
+                        this.arr[a].push(Math.floor(Math.random() * 10));
+                        document.write(this.arr[a][b] + "  ");
+
+                    }
+                    document.write("<br>");
+                }
+            }
+
+            this.revert = function () {
+                return !this.revert;
+            }
+            this.getValueReversed = function (i, j) {
+                return this.revert ? this.arr[j][j] : this.arr[i][j];
+            }
+        }
+    }
+
+    let Arr1 = new Arr();
+    Arr1.setValue(4, 3);
+    Arr1.revert();
+    document.writeln(Arr1.getValueReversed(3, 2))
+
+</script>
+</body>
+</html>

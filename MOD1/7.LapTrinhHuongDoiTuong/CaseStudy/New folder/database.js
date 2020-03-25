@@ -15,7 +15,7 @@ class Database {
             this.list.removeIf((customer_i) => customer.id === customer_i.id);
         }
         this.edit = function (customer) {
-            let index =  this.list.findIndex((item) => item.id === customer.id);
+            let index = this.list.findIndex((item) => item.id === customer.id);
             this.list[index] = customer;
         };
         this.getList = function () {

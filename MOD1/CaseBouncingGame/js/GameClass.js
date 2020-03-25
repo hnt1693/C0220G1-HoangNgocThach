@@ -1,3 +1,5 @@
+let count = 0;
+
 class Game {
     constructor() {
         this.newgame = function () {
@@ -36,28 +38,36 @@ class Game {
             GAME_LEVEL += 1;
             this.ball.speed += 1;
             this.bricks.createBrick();
-            this.draw()
-            this.soundManager.playNextLevel();
+            this.ballstart();
+            this.draw();
+
+
         }
 
         this.update = function () {
             if (this.status === GAME_START) {
                 this.ballstart();
+                count = 0;
             }
             if (this.bricks.count === 0) {
                 this.status = GAME_NEXTLEVEL;
-                this.ballstart();
+                this.nextLevel();
+                this.soundManager.disableSound();
+                if (count === 0) {
+                    this.soundManager.playNextLevel();
+                    count++;
+                }
             }
             if (checkCollision(this.ball, this.boundaryBot)) {
                 this.ball.x -= this.ball.Vx;
                 this.ball.y -= this.ball.Vy;
                 this.status = GAME_END;
+                GAME_LEVEL = 1;
                 this.soundManager.disableSound();
                 this.soundManager.playEndGame();
 
                 this.soundManager.endGame.loop = false;
             } else if (this.status === GAME_PLAYING) {
-                let game = this;
                 this.bar.update();
                 this.ball.update();
                 this.collision()
@@ -65,7 +75,6 @@ class Game {
             this.collision = function () {
                 let game = this;
                 let arcXBetweenRect = (this.ball.x > this.bar.x) && ((this.ball.x < this.bar.x + this.bar.width));
-                let arcYBetweenRect = (this.ball.y > this.bar.y) && ((this.ball.y > this.bar.y + this.bar.height));
                 if ((checkCollision(this.ball, this.boundaryLeft)) || (checkCollision(this.ball, this.boundaryRight))) {
                     this.ball.x = this.ball.x - this.ball.Vx;
                     this.ball.y = this.ball.y - this.ball.Vy;
@@ -93,7 +102,7 @@ class Game {
                             if (this.bar.direction === DIRECTION_LEFT) {
                                 if (this.ball.Vx <= 0) {
                                     this.ball.Vx -= 0.5;
-                                    if (this.ball.Vx <= -this.ball.speed - 0.5) {
+                                    if (this.ball.Vx <= -this.ball.speed + 0.5) {
                                         this.ball.Vx = -this.ball.speed + 0.5;
                                     }
                                     this.ball.Vy = -Math.sqrt(this.ball.speed * this.ball.speed - this.ball.Vx * this.ball.Vx);
@@ -218,8 +227,7 @@ class Game {
                 ctx.fillStyle = "white"
                 ctx.font = "17px Arial";
                 ctx.fillText("PRESS SPACE BUTTON", 100, 350);
-                ctx.font = "12px Arial";
-                ctx.fillText("TO START NEXT LEVEL", 60, 380);
+                ctx.fillText("TO START NEXT LEVEL", 100, 380);
                 this.ball.drawDrirection();
             }
 

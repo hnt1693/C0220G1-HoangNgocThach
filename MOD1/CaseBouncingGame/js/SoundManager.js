@@ -17,8 +17,9 @@ class SoundManager {
             this.bouncingSound.play();
         }
         this.playBackground = function () {
-            this.backGroundSound.volume = 0.2;
-            this.backGroundSound.play().then();
+            this.backGroundSound.volume = 0.3;
+            this.backGroundSound.play();
+            this.backGroundSound.loop = true;
         }
         this.disableSound = function () {
             this.backGroundSound.pause();
