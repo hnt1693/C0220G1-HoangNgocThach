@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    class Student {
+        constructor(stt, name, dob, avgMark) {
+            this.stt = stt;
+            this.name = name;
+            this.dob = dob;
+            this.avgMark = avgMark;
+            this.showInfor = function () {
+                document.write("<br>" +
+                    "STT      :  " + this.stt + "<br>" +
+                    "Name     :  " + this.name + "<br>" +
+                    "Birthday :  " + this.dob + "<br>" +
+                    "AVGMark  :  " + this.avgMark + "<br>"
+                    + "Xếp hạng :" + this.getRankMark());
+            }
+            this.getRankMark = function () {
+                if (this.avgMark > 8) {
+                    this.rankMark = "Giỏi";
+                } else if (this.avgMark >= 6.5) {
+                    this.rankMark = "Khá";
+                } else if (this.avgMark >= 5) {
+                    this.rankMark = "Trung bình";
+                } else if (this.avgMark >= 3.5) {
+                    this.rankMark = "Yếu";
+                } else {
+                    this.rankMark = "Kém";
+                }
+                return this.rankMark;
+            }
+
+        }
+    }
+
+    let student1 = new Student(1, "Nhật Minh", "15/2/93", 8.2);
+    let student2 = new Student(2, "Nhật Minh 2", "16/2/93", 4);
+    let student3 = new Student(3, "Nhật Minh 3", "17/2/93", 2.5);
+    student1.showInfor();
+
+
+
+</script>
+
+</body>
+</html>

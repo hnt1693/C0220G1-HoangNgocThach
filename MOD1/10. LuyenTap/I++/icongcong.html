@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a = 3 ;
+    let b = 4;
+    let c = 5;
+    a = ++a - b++ + a++ + b--;
+    b = a++ - ++b + --c + c++ + b--;
+    c = b++ + ++c - c-- + a++ - a++;
+
+    console.log("a=" + a + "   " + "b= " + b + "   " + "c= "+ c);
+</script>
+</body>
+</html>

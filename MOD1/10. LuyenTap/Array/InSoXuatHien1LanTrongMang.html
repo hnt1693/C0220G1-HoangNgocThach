@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr1 = [1,2,3,2,3];
+    inSoXuatHien1Lan(arr1);
+
+    function inSoXuatHien1Lan(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let isOnce = true;
+            for (let j = 0; j < arr.length; j++) {
+                if (i === j) {
+                    continue;
+                } else {
+                    if (arr[i] === arr[j]) {
+                        isOnce = false;
+                        break;
+                    }
+                }
+            }
+            if (isOnce) {
+                document.write(arr[i] + " ");
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

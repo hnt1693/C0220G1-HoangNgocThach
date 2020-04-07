@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+        let n = parseInt(prompt("Nhập vào số N nguyên tố bạn muốn xem : "));
+        let count = 0;
+        for (let i = 2; count<n; i++) {
+            if (isNguyenTo(i)){
+                document.write(i + " ");
+                count++;
+                console.log(isNguyenTo(i));
+            }
+        }
+
+    function isNguyenTo(number) {
+        let isNguyenTo = true;
+        if (number === 2) {
+            return isNguyenTo;
+        } else {
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    isNguyenTo = false;
+                    break;
+                }
+            }
+        }
+        return isNguyenTo;
+    }
+
+</script>
+</body>
+</html>

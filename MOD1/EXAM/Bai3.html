@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrMark = [100, 5, 2, 100, -1, 6, 8, 100, 11];
+    let maxIndex;
+    for (let i = 0; i < arrMark.length; i++) {
+        if (arrMark[i] === findMaxScore(arrMark)) {
+            maxIndex = i;
+        }
+    }
+    document.write("Số lớn nhất trong dãy là " + findMaxScore(arrMark) + " với chỉ số Index là :" + maxIndex + "<br>");
+
+    function findMaxScore(array) {
+        let max = array[0];
+        for (let i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+
+</script>
+</body>
+</html>

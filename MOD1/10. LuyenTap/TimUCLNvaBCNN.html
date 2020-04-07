@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // document.write(uCLN(12, 8));
+
+    num1 = parseInt(prompt("số thứ 1 : "));
+    num2 = parseInt(prompt("số thứ 2 : "));
+    document.write("BCNN của 2 số " + num1 + " và " + num2 + " là : " + bCNN(num1, num2));
+
+    function uCLN(numA, numB) {
+        let uCLN;
+        let min = numA < numB ? numA : numB;
+
+        for (let i = min; i >= 1; i--) {
+
+            if ((numA % i === 0) && (numB % i === 0)) {
+                uCLN = i;
+                break;
+            }
+            console.log(i + " " + uCLN);
+        }
+        return uCLN;
+
+    }
+    function bCNN(num1, num2) {
+return (num1*num2/uCLN(num1,num2));
+    }
+
+
+
+</script>
+</body>
+</html>

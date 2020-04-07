@@ -10,8 +10,6 @@
     for (let i = 0; i < 100000000; i++) {
         arr.push(i);
     }
-
-
     let number = parseInt(prompt("Số bạn cần tìm là"));
     // timKiemTuanTu();
     let exist1 = false;
@@ -50,7 +48,7 @@
         return exist;
     }
 
-
+//tìm kiếm nhị phân kiểu đệ quy
     function searchNumber(number, array) {
         let j = Math.floor(array.length / 2);
         console.log(j + "  " + array[j] + " " + number);

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str =
+        "1.\tCâu lệnh git pull được sử dụng để làm gì?: \n" +
+        "\n" +
+        "A.  Đưa thay đổi từ local repository lên remote repository\n" +
+        "B.\tLấy dữ liệu từ remote repository về local repository\n" +
+        "C.\tTạo một repository mới\n" +
+        "D.\tĐưa tất cả các file của dự án vào trong chỉ mục\n" +
+        "\n" +
+        "\n" +
+        "2.        Kết quả thực thi đoạn mã sau là gì?\n" +
+        "var x = 4;\n" +
+        "if(++x < 6){\n" +
+        "    x++;\n" +
+        "} else{\n" +
+        "    x--;\n" +
+        "}\n" +
+        "document.write(x); \n" +
+        "\n" +
+        "A.\t6\n" +
+        "B.\tLỗi\n" +
+        "C.\t5\n" +
+        "D.\t7\n" +
+        "\n" +
+        "\n" +
+        "3.\tKết quả thực thi đoạn mã sau là gì?\n" +
+        "\n" +
+        "var x = 2;\n" +
+        "switch(x){\n" +
+        "    case 1:\n" +
+        "        document.write(\"1\");\n" +
+        "        break;\n" +
+        "    case 2:\n" +
+        "        document.write(\"2\");\n" +
+        "    case 3: \n" +
+        "        document.write(\"3\");\n" +
+        "    case 4: \n" +
+        "        document.write(\"4\");\n" +
+        "        break;\n" +
+        "    case 5:\n" +
+        "        document.write(\"5\");    \n" +
+        "\n" +
+        "A.\t234\n" +
+        "B.\t12345\n" +
+        "C.\t2\n" +
+        "D.\t12\n" +
+        "\n" +
+        "4.\tHãy xác định câu lệnh để tạo 1 repository mới?\n" +
+        "A.\tgit create\n" +
+        "B.\tgit commit\n" +
+        "C.\tgit init\n" +
+        "D.\tgit add\n" +
+        "\n" +
+        "\n" +
+        "5.\tKết quả thực thi đoạn mã sau là gì? \n" +
+        "var numbers = [1, 2, 3]; \n" +
+        "document.write(numbers[numbers.length]);\n" +
+        "\n" +
+        "A.\t3\n" +
+        "B.\t1\n" +
+        "C.\t2\n" +
+        "D.\tundefined\n" +
+        "\n" +
+        "6.\tKết quả thực thi đoạn mã sau là gì? \n" +
+        "var numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];\n" +
+        "document.write(numbers[2][1]);\n" +
+        "\n" +
+        "A.\t8\n" +
+        "B.\t3\n" +
+        "C.\t2\n" +
+        "D.\t4\n" +
+        "\n" +
+        "7.\tTrong JavaScript hàm ParseInt() dùng để làm gì?\n" +
+        "A.\tChuyển 1 số thành 1chuỗi \n" +
+        "B.\tChuyển 1 chuỗi thành số thực\n" +
+        "C.\tChuyển 1 chuỗi thành số nguyên\n" +
+        "D.\tChuyển 1 chuỗi thành số\n" +
+        "\n" +
+        "8.\tCâu lệnh nào sau đây  chỉ định git theo dấu tất cả những thay đổi hiện có?\n" +
+        "1.\tGit Add\n" +
+        "2.\tGit commit \n" +
+        "3.\tGit commit add\n" +
+        "4.\tGit push –am “Message\"\n" +
+        "\n" +
+        "9.\tPhát biểu nào sau đây đúng về khái niệm “ thuật toán”\n" +
+        "A.\tThuật toán  là tập hợp các bước để đưa ra đáp án cho 1 bài toán\n" +
+        "B.\tThuật toán/ giải thuật bao gồm các chỉ thị để giải quyết 1 vấn đề.\n" +
+        "C.\tThuật toán là cách để giải 1 bài toán\n" +
+        "D.\tThuật toán/ giải thuật bao gồm 1 số bước để giải quyết một vấn đề\n" +
+        "\n" +
+        "\n" +
+        "\n" +
+        "10.\tXác định giá trị của biến num sau khi thực hiện đoạn mã sau:\n" +
+        "var num = 0; \n" +
+        "do { \n" +
+        "    num++; \n" +
+        "} while ( ++num < 10 ) ;. \n" +
+        "\n" +
+        "A.\t12\n" +
+        "B.\t10\n" +
+        "C.\t11\n" +
+        "D.\tKhông có giá trị nào đúng\n" +
+        "\n" +
+        "11.\tBiểu thức sau cho kết quả là gì?\n" +
+        "          2+”3”+5=?\n" +
+        "\n" +
+        "\n" +
+        "A.\t55\n" +
+        "B.\t10\n" +
+        "C.\t235\n" +
+        "D.\tUndefined\n" +
+        "\n" +
+        "12.\tHãy phân tích và chỉ ra giá trị của các biến trong đoạn mã sau:\n" +
+        "var a = 5;\n" +
+        "var b = a++;\n" +
+        "var c = ++b;\n" +
+        "var d = ++c;\n" +
+        "A.\ta = 5, b = 6, c = 6, d = 6\n" +
+        "B.\ta = 6, b = 6, c = 7, d = 7\n" +
+        "C.\ta = 6, b = 6, c = 6, d = 6\n" +
+        "D.\ta = 6, b = 7, c = 5, d = 7\n" +
+        " \n" +
+        "13.\tHãy phân tích và chỉ ra số lần dòng chữ \"Xin chào\" sẽ được in ra khi thực thi đoạn mã sau:\n" +
+        "var i = -5;\n" +
+        "while (i <= 5) {\n" +
+        "    if(i >= 0)\n" +
+        "        break;\n" +
+        "    else {\n" +
+        "        i++;\n" +
+        "        continue;\n" +
+        "    }\n" +
+        "    document.write(\"Xin chào\");\n" +
+        "}\n" +
+        "\n" +
+        "A.\t0 lần\n" +
+        "B.\t5 lần\n" +
+        "C.\t10 lần\n" +
+        "D.\tVô số lần\n" +
+        "\n" +
+        "14.\tHãy chỉ ra đoạn mã đúng nào sau đây trả về phần tử nhỏ nhất của một mảng a bao gồm các phần tử {2, -1, 0, 3, 5, 8}:\n" +
+        "A.\t\n" +
+        "var a = [2, -1, 0, 3, 5, 8];\n" +
+        "var i, min = a[0];\n" +
+        "for(i = 1; i < 6; i++){\n" +
+        "    if(min > a[i]){\n" +
+        "        min = a[i];\n" +
+        "    }\n" +
+        "}\n" +
+        "document.write(\"Min value is: \" + min);\n" +
+        "B.\t\n" +
+        "var a = [2, -1, 0, 3, 5, 8];\n" +
+        "var i, min = a[0];\n" +
+        "for(i = 1; i < 5; i++){\n" +
+        "    if(min > a[i]){\n" +
+        "        min = a[i];\n" +
+        "    }\n" +
+        "}\n" +
+        "                                         document.write(\"Min value is: \" + min);\n" +
+        "C.\t\n" +
+        "var a = [2, -1, 0, 3, 5, 8];\n" +
+        "var i, min = a[0];\n" +
+        "for(i = 1; i < 6; i++){\n" +
+        "    if(min < a[i]){\n" +
+        "        min = a[i];\n" +
+        "    }\n" +
+        "}\n" +
+        "document.write(\"Min value is: \" + min);\n" +
+        "D.\t\n" +
+        "var a = [2, -1, 0, 3, 5, 8];\n" +
+        "var i, min = -2;\n" +
+        "for(i = 1; i < 6; i++){\n" +
+        "    if(min > a[i]){\n" +
+        "        min = a[i];\n" +
+        "    }\n" +
+        "}\n" +
+        "document.write(\"Min value is: \" + min);\n" +
+        "\n" +
+        "15.\tHãy phân tích và chỉ ra giá trị của biến expectedValue khi thực thi đoạn mã sau:\n" +
+        "var a = [1, 3, 5, 7, 2, 4, 8];\n" +
+        "var i;\n" +
+        "var expectedValue = 0;\n" +
+        "for(i = 0; i < 7; i++){\n" +
+        "    expectedValue += a[i];\n" +
+        "}\n" +
+        "expectedValue /= 7;\n" +
+        "document.write(\"Expected value: \" + expectedValue);\n" +
+        "\n" +
+        "A.\tTổng giá trị tất cả các phần tử của mảng a.\n" +
+        "B.\tGiá trị trung bình của tất cả các phần tử của mảng a.\n" +
+        "C.\tGiá trị giai thừa của phần tử thứ 7 của mảng a.\n" +
+        "D.\tHiệu số giữa phần tử cuối cùng và phần tử đầu tiên\n" +
+        " \n" +
+        "16.\tDự đoán đầu ra của đoạn mã sau\n" +
+        "         for(var i = 0; I < 10; i++) {\n" +
+        "           Console.log(i);\n" +
+        "}\n" +
+        "Console.log(i);\n" +
+        " \n" +
+        "A.\t0,1,2,3,4,5,6,7,8,9,10,11\n" +
+        "B.\t0,1,2,3,4,5,6,7,8,9\n" +
+        "C.\t0,1,2,3,4,5,6,7,8,9,10\n" +
+        "D.\t1,2,3,4,5,6,7,8,9,10,11\n" +
+        "\n" +
+        "\n" +
+        "17.\t Kết quả của đoạn mã sau là gì?\n" +
+        "function swap(x, y) \n" +
+        "{ \n" +
+        "    let temp = x; \n" +
+        "    x = y; \n" +
+        "    y = temp; \n" +
+        "} \n" +
+        "var x = 5;\n" +
+        "var y=6;\n" +
+        "swap(x , y);\n" +
+        " \n" +
+        "A.\tx=5, y=5;\n" +
+        "B.\tx=5, y=6\n" +
+        "C.\tx=6,y=6;\n" +
+        "D.\tx=6,y=5;\n" +
+        " \n" +
+        "18.\tCâu lệnh break kết hợp với vòng lặp để làm gì?\n" +
+        "A.\tNhảy đến 1 tập lệnh khác.\n" +
+        "B.\tKhông thể kết hợp được.\n" +
+        "C.\tKhông có ý nghĩa gì trong vòng lặp\n" +
+        "D.\tThoát khỏi vòng lặp nếu gặp lệnh này.\n" +
+        "\n" +
+        "\n" +
+        "19.\tCho hàm func1 như sau:\n" +
+        "function func1(a){\n" +
+        "    if(a == 2)\n" +
+        "        return 2;\n" +
+        "    return a * func1(a - 1);\n" +
+        "}\n" +
+        "Hãy phân tích và xác định giá trị trả về khi gọi hàm func1 với tham số truyền vào là 3.\n" +
+        "A.\t3\n" +
+        "B.\t6\n" +
+        "C.\t2\n" +
+        "D.\t24\n" +
+        " \n" +
+        "20.\tCâu lệnh continue dùng để làm gì?\n" +
+        "A.\tNhảy đến vòng lặp tiếp theo.\n" +
+        "B.\tKhông thể kết hợp được.\n" +
+        "C.\tKhông có ý nghĩa gì trong vòng lặp\n" +
+        "D.\tNgưng vòng lặp đó nếu gặp lệnh này.\n" +
+        "\n" +
+        "\n" +
+        "21.\tHãy chỉ ra các tên biến không hợp lệ. (Chọn 3)\n" +
+        "A.\t_0var\n" +
+        "B.\t–var\n" +
+        "C.\tvariable\n" +
+        "D.\tvar\n" +
+        "E.\tbreak\n" +
+        "\n" +
+        "22.\tKết quả của đoạn chương trình sau là gì?\n" +
+        "let x = [1,3,5,7];\n" +
+        "let y = [2,4,6];\n" +
+        "x[2] = y[x.length-3] + x [ x[0] + y[0] ];\n" +
+        "console.log(x);\n" +
+        "\n" +
+        "A.\t[1,3,11,7]\n" +
+        "B.\t[1,3,5,7]\n" +
+        "C.\t[1,3,9,7]\n" +
+        "D.\tKhông đáp án nào đúng.\n" +
+        " \n" +
+        "23.\tHãy phân tích và chỉ ra kết quả khi thực thi đoạn mã sau:\n" +
+        "var y = 0;\n" +
+        "var x = (!y === 1);\n" +
+        "document.write(x);\n" +
+        " \n" +
+        "A.\ttrue\n" +
+        "B.\tfalse\n" +
+        "C.\tLỗi biên dịch\n" +
+        "D.\t1\n" +
+        "\n" +
+        "24.\tHãy xác định vị trí của phần tử đầu tiên và phần tử cuối cùng của mảng một chiều A có 10 phần tử.\n" +
+        "A.\t0 và 9\n" +
+        "B.\t-1 và 9\n" +
+        "C.\t-1 và 10\n" +
+        "D.\t0 và 10\n" +
+        "\n" +
+        "\n" +
+        "25.\tKết quả của f.length là gì?\n" +
+        "let iMax = 15;\n" +
+        "let jMax = 5;\n" +
+        "let f = new Array();\n" +
+        "for (i = 0; i < iMax; i++) {\n" +
+        "    f[i] = new Array();\n" +
+        "    for (j = 0; j < jMax; j++) {\n" +
+        "        f[i][j] = 0;\n" +
+        "    }\n" +
+        "} \n" +
+        " \n" +
+        "A.\t15\n" +
+        "B.\t5\n" +
+        "C.\t75\n" +
+        "D.\tLỗi\n" +
+        "\n" +
+        "\n" +
+        "26.\tKết quả của đoạn mã sau là gì?\n" +
+        "let x = [2, 4, 5];\n" +
+        "let counter = 4;\n" +
+        "if (++x[counter] < 5) {\n" +
+        "    console.log('Code');\n" +
+        "} else {\n" +
+        "    console.log('gym');\n" +
+        "}\n" +
+        "A.\tCode\n" +
+        "B.\tCodegym\n" +
+        "C.\tĐoạn mã có lỗi\n" +
+        "D.\tgym\n" +
+        "\n" +
+        "27.\tHãy xác định các tính chất đặc trưng của mô hình Lập trình Hướng Đối tượng. (chọn 2)\n" +
+        "A.\tTính trừu tượng (abstraction) và tính đóng gói (encapsulation)\n" +
+        "B.\tTính đa hình (polymorphism) và tính kế thừa (inheritance)\n" +
+        "C.\tTính an toàn kiểu (type safety)\n" +
+        "D.\tTính dễ mở rộng (extensibility)\n" +
+        " \n" +
+        "28.\tHãy phân tích và chỉ ra kết quả thực thi đoạn mã sau:\n" +
+        "function swap(a, b) {\n" +
+        "    var temp = a;\n" +
+        "    a = b;\n" +
+        "    b = temp;\n" +
+        "   return a;\n" +
+        "}\n" +
+        "var a = 5;\n" +
+        "var b = 10;\n" +
+        "var result= swap(a, b);\n" +
+        "document.write(\"a = \" + result + \", b = \" + b);\n" +
+        "\n" +
+        "A.\ta = 5, b= 10\n" +
+        "B.\ta = 10, b = 5\n" +
+        "C.\ta = 5, b = 5\n" +
+        "D.\ta = 10, b = 10 \n" +
+        "\n" +
+        "29.\tHãy phân tích và chỉ ra kết quả thực thi đoạn mã sau:\n" +
+        "function swap(a, b) {\n" +
+        "    var temp = a.value;\n" +
+        "    a.value = b.value;\n" +
+        "    b.value = temp;\n" +
+        "}\n" +
+        "var a = {value: 5};\n" +
+        "var b = {value: 10};\n" +
+        "swap(a, b);\n" +
+        "document.write(\"a = \" + a.value + \", b = \" + b.value);\n" +
+        "\n" +
+        "A.\ta = 5, b= 5\n" +
+        "B.\ta = 10, b = 5\n" +
+        "C.\ta = 5, b = 10\n" +
+        "D.\ta = 10, b = 10 \n" +
+        "\n" +
+        "30.\tKết quả của x trong đoạn chương trình sau?\n" +
+        "let a = new Array(12, true, \"text\");\n" +
+        "x = 10;\n" +
+        "if (a[1]) x = 20;\n" +
+        "else x = 30; \n" +
+        " \n" +
+        "A.\t30\n" +
+        "B.\t20\n" +
+        "C.\t10 \n" +
+        "D.\tLỗi \n" +
+        " \n" +
+        "31.\tCho đoạn mã sau \n" +
+        "if (login == 'Employee') {\n" +
+        "  message = 'Hello';\n" +
+        "} else if (login == 'Director') {\n" +
+        "  message = 'Greetings';\n" +
+        "} else if (login == '') {\n" +
+        " message = 'No login';\n" +
+        "} else {\n" +
+        "  message = '';\n" +
+        "}\n" +
+        "Khi login có giá trị là \"employee\", đoạn mã trên trả về kết quả message là gì\n" +
+        " \n" +
+        "A.\t'Hello'\n" +
+        "B.\t'default'\n" +
+        "C.\t'No login'\n" +
+        "D.\t''\n" +
+        " \n" +
+        "32.\tresult = (a + b > 14) ? 'false' : 'pass';\n" +
+        "         Khi a = 6, b= 7 thì result nhận giá trị là gì?\n" +
+        " \n" +
+        "A.\tfalse\n" +
+        "B.\tpass\n" +
+        "C.\t13\n" +
+        "D.\ttrue\n" +
+        " \n" +
+        "33. Lệnh nào dùng để đẩy mã nguồn từ Local Repository lên Remote Repository\n" +
+        "A.\tpush\n" +
+        "B.\tupdate\n" +
+        "C.\tpull\n" +
+        "D.\tcommit\n" +
+        " \n" +
+        "34. Cho hàm sau:\n" +
+        "function boolean function1(n)\n" +
+        "{\n" +
+        "    var flag = true; \n" +
+        "    if (n < 2){\n" +
+        "        flag = false;\n" +
+        "    }\n" +
+        "    else if (n == 2){\n" +
+        "        flag = true;\n" +
+        "    }\n" +
+        "    else if (n % 2 == 0){\n" +
+        "      flag = false;\n" +
+        "    }\n" +
+        "    else{\n" +
+        "        for (var i = 3; i < n-1; i+=2)\n" +
+        "        {\n" +
+        "            if (n % i == 0){\n" +
+        "                flag = false;\n" +
+        "                break;\n" +
+        "            }\n" +
+        "        }\n" +
+        "    }\n" +
+        "}\n" +
+        "Hàm function1(11) trả về kết quả gì?\n" +
+        "A.\ttrue\n" +
+        "B.\tfalse\n" +
+        " \n" +
+        "35. Đọc mã sau. Câu “Chao ban” được in ra mấy lần?:\n" +
+        "while(true) {\n" +
+        "document.write(“Chao ban!);\n" +
+        "break;\n" +
+        "}\n" +
+        "A.\tvô số lần\n" +
+        "B.\t0 lần.\n" +
+        "C.\tLỗi\n" +
+        "D.\t1 lần\n" +
+        " \n" +
+        "36. Đọc đoạn mã sau và “xin chao” được in ra bao nhiêu lần?\n" +
+        "for(;;) {\n" +
+        "       console.log(\"xin chao\")\n" +
+        "        }\n" +
+        "A.\tLỗi\n" +
+        "B.\t0 lần\n" +
+        "C.\t1 lần\n" +
+        "D.\tVô số lần\n" +
+        " \n" +
+        "37. Dự đoán kết quả của đoạn mã sau?\n" +
+        "  var test = \"CodeGym\";\n" +
+        "        if (isNaN(test)) {\n" +
+        "        document.write(\"Hello\");\n" +
+        "        } else {\n" +
+        "  document.write(\"GoodBye\");\n" +
+        "        }\n" +
+        "A.\tHello\n" +
+        "B.\tGoodBye\n" +
+        "C.\tKhông in ra gì\n" +
+        "D.\tLỗi\n" +
+        " \n" +
+        "38. Dự đoán kết quả của đoạn mã sau?\n" +
+        "var test = \"CodeGym\";\n" +
+        "document.write(test.toLowerCase());\n" +
+        "\n" +
+        "A.\tCodeGym\n" +
+        "B.\tcodegym\n" +
+        "C.\tCODEGYM\n" +
+        " \n" +
+        "39. Kết quả của đoạn mã sau là gì?\n" +
+        "var sum = 0;\n" +
+        "for (var i = -1; i < 10; i = i + 2) {\n" +
+        "                if (i % 2 == 0) {\n" +
+        "                     sum = sum + i;\n" +
+        "                 }\n" +
+        "           }\n" +
+        "         document.write(sum);\n" +
+        "A.\t-1\n" +
+        "B.\t24\n" +
+        "C.\t40\n" +
+        "D.\t0 \n" +
+        " \n" +
+        "40. Đâu là toán tử thuộc loại toán tử logic \n" +
+        "A.\t<=\n" +
+        "B.\tor\n" +
+        "C.\tand\n" +
+        "D.\t-\n" +
+        " \n" +
+        "41. Kết quả của đoạn mã sau?\n" +
+        "var numbers = 4;\n" +
+        "document.write(Math.abs(numbers));\n" +
+        "\n" +
+        "A.\t4\n" +
+        "B.\t-4\n" +
+        "C.\t16\n" +
+        "D.\t2\n" +
+        " \n" +
+        "42. Ba phần của vòng lặp for?\n" +
+        "A.\tBiểu thức khởi tạo (Intialization Expression)\n" +
+        "B.\tBiểu thức điều kiện (Conditional Expression)\n" +
+        "C.\tBiểu thức đánh giá (Evaluation Expression)\n" +
+        "D.\tBiểu thức tăng/giảm (Increment/Decrement Expression)\n" +
+        "E.\tBiểu thức kết quả (Result Expression)\n" +
+        " \n" +
+        "43. Đâu là cú pháp để định nghĩa một đối tượng trong JavaScript\n" +
+        "A.\t \n" +
+        "var objectName = {\n" +
+        "                  member1Name: member1Value,\n" +
+        "                   member2Name: member2Value,\n" +
+        "                   member3Name: member3Value\n" +
+        "         }\n" +
+        "B.\t \n" +
+        "var objectName = {\n" +
+        "   \t\tmember1Name - member1Value,\n" +
+        "   \t\tmember2Name - member2Value,\n" +
+        "   \t\tmember3Name - member3Value\n" +
+        "                                     }\n" +
+        " \n" +
+        " \n" +
+        "C.\t \n" +
+        "var objectName = {\n" +
+        "   \t\tmember1Name.member1Value,\n" +
+        "   \t\tmember2Name.member2Value,\n" +
+        "   \t\tmember3Name. member3Value\n" +
+        " \t}\n" +
+        " \n" +
+        "D.\t \n" +
+        "var objectName = {\n" +
+        "   \t\tmember1Name = member1Value,\n" +
+        "   \t\tmember2Name = member2Value,\n" +
+        "   \t\tmember3Name = member3Value\n" +
+        " \t}\n" +
+        " \n" +
+        "44. Những dòng lệnh nào khai báo một mảng gồm 4 phần tử chuỗi?\n" +
+        " \n" +
+        "A.\tvar names = new Array(\"An\",\"Bình\",\"Tuấn\", \"Sơn\");\n" +
+        "B.\tvar names = new Array[\"An\",\"Bình\",\"Tuấn\", \"Sơn\"];\n" +
+        "C.\tvar names = Array(\"An\", \"Bình\", \"Tuấn\", \"Sơn\");\n" +
+        "D.\tvar names = [\"An\", \"Bình\", \"Tuấn\", \"Sơn\"];\n" +
+        " \n" +
+        "45. Để khai báo và tạo một đối tượng thuộc lớp Date để xử lý thời gian bạn cần sử dụng dòng lệnh nào?\n" +
+        " \n" +
+        "A.\tvar Date date;\n" +
+        "B.\tvar date = new Date();\n" +
+        "C.\tvar date = new Date;\n" +
+        "D.\tvar date = Date();\n" +
+        " \n" +
+        " \n" +
+        "46. Kết quả thực thi đoạn mã sau là gì?\n" +
+        " \n" +
+        "var numbers = [1, 2];\n" +
+        "numbers[3] = 3;\n" +
+        "document.write(numbers.length);\n" +
+        "A.\t4\n" +
+        "B.\t3\n" +
+        "C.\t2\n" +
+        "D.\tLỗi\n" +
+        " \n" +
+        "47. Cho đoạn mã sau:\n" +
+        "var str = \"Red, Blue, Yellow\"\n" +
+        "var res = str.slice(5,9) \n" +
+        "Biến res có giá trị là gì? \n" +
+        " \n" +
+        "A.\tBlue\n" +
+        "B.\tBlue,\n" +
+        "C.\tBlu\n" +
+        "D.\tRed,\n" +
+        " \n" +
+        "48. Phần thân của vòng lặp while được thực hiện liên tục cho đến khi điều kiện lặp là \n" +
+        " \n" +
+        "A.\tHoàn tất\n" +
+        "B.\tĐúng\n" +
+        "C.\tSai\n" +
+        "D.\tKhông có đáp án đúng\n" +
+        " \n" +
+        " \n" +
+        "49. Xác định giá trị của biến message sau khi chạy đoạn mã sau:\n" +
+        "var day = \"Mon\"; \n" +
+        "var message = \"\"; \n" +
+        " \n" +
+        "switch(day){ \n" +
+        "case \"Mon\": message = \"Ngày đầu tuần\"; \n" +
+        "case \"Wed\": message = \"Ngày giữa tuần\"; \n" +
+        "case \"Sat\": break;\n" +
+        "case \"Sun\": message = \"Ngày nghỉ\"; \n" +
+        "}\n" +
+        " \n" +
+        "A.\tNgày đầu tuần\n" +
+        "B.\tNgày giữa tuần\n" +
+        "C.\tNgày nghỉ\n" +
+        "D.\tXảy ra lỗi\n" +
+        " \n" +
+        "50.  Cho đoạn mã sau:\n" +
+        "var str =  \"Hello CodeGym\"\n" +
+        "var c = str.charAt(6);\n" +
+        "Biến c có giá trị là gì?\n" +
+        " \n" +
+        "A.\to\n" +
+        "B.\tC\n" +
+        "C.\tkhoảng trắng \n" +
+        "D.\tCodeGym"
+    let str2 = "1\tB\n" +
+        "2\tA\n" +
+        "3\tC\n" +
+        "4\tC\n" +
+        "5\tD\n" +
+        "6\tA\n" +
+        "7\tC\n" +
+        "8\tA\n" +
+        "9\tD\n" +
+        "10\tB\n" +
+        "11\tC\n" +
+        "12\tB\n" +
+        "13\tA\n" +
+        "14\tA\n" +
+        "15\tB\n" +
+        "16\tB\n" +
+        "17\tD\n" +
+        "18\tD\n" +
+        "19\tB\n" +
+        "20\tA\n" +
+        "21\tB,D,E\n" +
+        "22\tC\n" +
+        "23\tA\n" +
+        "24\tA\n" +
+        "25\tA\n" +
+        "26\tC\n" +
+        "27\tA,B\n" +
+        "28\tB\n" +
+        "29\tB\n" +
+        "30\tB\n" +
+        "31\tD\n" +
+        "32\tB\n" +
+        "33\tA\n" +
+        "34\tA\n" +
+        "35\tD\n" +
+        "36\tA\n" +
+        "37\tA\n" +
+        "38\tB\n" +
+        "39\tD\n" +
+        "40\tB,C\n" +
+        "41\tD\n" +
+        "42\tA,B,E\n" +
+        "43\tA\n" +
+        "44\tA,D\n" +
+        "45\tB\n" +
+        "46\tD\n" +
+        "47\tA\n" +
+        "48\tC\n" +
+        "49\tD\n" +
+        "50\tC\n"
+    let arr = [];
+
+    function trichxuatvitricaccau(str) {
+        for (let i = 1; i < 51; i++) {
+            let a = str.indexOf(i.toString() + ".");
+            if (i > 0) {
+                arr.push(a)
+            }
+        }
+    }
+
+    let ketquaHS = [];
+    let ketquaHS1 = [];
+
+    function ketQuqThiSinh(str2) {
+        for (let i = 1; i < 51; i++) {
+            let a = str2.indexOf(i.toString() + "\t");
+            if (i > 0) {
+                ketquaHS.push(a);
+            }
+        }
+        console.log(ketquaHS)
+        let i = 2;
+        while (i < 255) {
+            document.writeln(str2.charAt[i]);
+            i = i + 5;
+        }
+    }
+
+    // ketQuqThiSinh(str2);
+    document.writeln(str2.charAt(2));
+    document.writeln(str2.charAt(7));
+
+</script>
+</body>
+</html>
