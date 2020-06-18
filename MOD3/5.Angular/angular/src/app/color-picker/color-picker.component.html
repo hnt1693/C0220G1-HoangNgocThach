@@ -1,0 +1,13 @@
+<p>color-picker works!</p>
+<label>
+  <select [(ngModel)]="color" style="height: 100px; background-color: {{color}}">
+    <option style="width: 200px;height: 50px; background-color: green" value="green">Green</option>
+    <option value="yellow" style="width: 200px;height: 50px; background-color: yellow">Yellow</option>
+    <option value="blue" style="width: 200px;height: 50px; background-color: blue">Blue</option>
+    <option value="red" style="width: 200px;height: 50px; background-color: red">Red</option>
+  </select>
+</label>
+<div style="width: 500px; height: 300px; background-color:{{color}} ;"></div>
+
+<div [ngStyle]="{backgroundColor:color}" style="width: 500px; height: 300px"></div>
+

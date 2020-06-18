@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/mycss.css">
+
+<meta charset="UTF-8">
+<script src="myts.js"></script>
+<style>
+    .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        display-inside: ruby-text;
+        margin: 10px auto;
+    }
+
+    ul li {
+        display: block;
+        height: 70px;
+        line-height: 70px;
+    }
+
+    ul li img {
+        vertical-align: middle;
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    img {
+        padding-right: 20px;
+    }
+
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-2"></div>
+        <div class="col-xl-10">
+            <input type="button" value="SEARCH" id="search" onclick="search()">
+            <div class="container h-100">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="searchbar">
+                        <input class="search_input" type="text" id="keyword" name="" placeholder="Search...">
+                        <a href="#" class="search_icon" onclick="search()" ><i  class="fas fa-search"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xl-2"></div>
+            <div class="col-xl-10">
+                <div class="app">
+                    <ul id="list">Danh sách kết quả tìm kiếm :</ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

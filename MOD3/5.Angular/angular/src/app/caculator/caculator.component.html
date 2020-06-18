@@ -1,0 +1,10 @@
+<p>caculator works!</p>
+<input [value]='number1' type="number" (change)="onFirstChange($event.target.value)">
+<select (change)="cal($event.target.value)" [value]="operator" >
+  <option value='+'> +</option>
+  <option value='-'> -</option>
+  <option value='*'> *</option>
+  <option value='/'> /</option>
+</select>
+<input [value]="number2" type="number" (change)="onSecondChange($event.target.value)" >
+<h2> {{result}}</h2>

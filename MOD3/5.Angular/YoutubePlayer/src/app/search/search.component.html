@@ -1,0 +1,19 @@
+<p>search works!</p><main>
+  <div id="main-left">
+    <form id="frm-search" action="#">
+      <input type="text" name="keyword" id="keyword" placeholder="Type something and enter" autocomplete="off" autofocus (change)="changeInput($event.target.value)">
+      <input type="button" value="CLEAR" id="clear">
+      <input type="button" value="SEARCH" id="ok" (click)="search()">
+    </form>
+
+    <div id="result-search"></div>
+  </div>
+  <div id="main-right">
+    <div id="video"></div>
+    <p id="title-queue"></p>
+    <div id="queue-play"></div>
+  </div>
+
+  <div class="clear-fix"></div>
+  <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+</main>
